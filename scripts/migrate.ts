@@ -205,7 +205,10 @@ async function main(): Promise<void> {
   const command = process.argv[2];
   const migrationRunner = new MigrationRunner();
   
-  switch (command) {
+  // Default to 'migrate' if no command provided
+  const actualCommand = command || 'migrate';
+  
+  switch (actualCommand) {
     case 'migrate':
       await migrationRunner.run();
       break;
