@@ -1,0 +1,67 @@
+# LocalEx OpenSearch Configuration
+# Optimized for development and testing
+
+# Cluster configuration
+cluster.name: localex-search
+node.name: localex-node-1
+node.roles: [master, data, ingest]
+
+# Network configuration
+network.host: 0.0.0.0
+http.port: 9200
+transport.port: 9300
+
+# Discovery (single node for development)
+discovery.type: single-node
+
+# Security (disabled for development)
+plugins.security.disabled: true
+plugins.security.ssl.http.enabled: false
+plugins.security.ssl.transport.enabled: false
+
+# Performance settings
+indices.memory.index_buffer_size: 20%
+indices.queries.cache.size: 10%
+indices.fielddata.cache.size: 20%
+
+# Index settings
+action.auto_create_index: true
+action.destructive_requires_name: true
+
+# Logging
+logger.level: INFO
+logger.org.opensearch.discovery: DEBUG
+logger.org.opensearch.cluster: DEBUG
+
+# Search settings
+search.max_open_scroll_context: 1000
+search.default_search_timeout: 30s
+search.max_concurrent_shard_requests: 5
+
+# Thread pool settings
+thread_pool:
+  search:
+    size: 8
+    queue_size: 1000
+  write:
+    size: 8
+    queue_size: 200
+  get:
+    size: 8
+    queue_size: 1000
+
+# Circuit breaker settings
+indices.breaker.total.limit: 70%
+indices.breaker.fielddata.limit: 40%
+indices.breaker.request.limit: 60%
+
+# Recovery settings
+cluster.routing.allocation.disk.threshold_enabled: true
+cluster.routing.allocation.disk.watermark.low: 85%
+cluster.routing.allocation.disk.watermark.high: 90%
+cluster.routing.allocation.disk.watermark.flood_stage: 95%
+
+# Monitoring
+plugins.security.audit.type: internal_opensearch
+plugins.security.audit.config.disabled_rest_categories: NONE
+plugins.security.audit.config.disabled_transport_categories: NONE

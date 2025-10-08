@@ -1,0 +1,201 @@
+-- LocalEx Database Schema - Simplified Version
+-- Basic schema for LocalEx development
+
+-- Enable UUID extension
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- Enable pgcrypto for secure random generation
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+-- Create custom types
+CREATE TYPE account_type AS ENUM ('MAIN', 'ESCROW', 'GIFT');
+CREATE TYPE ledger_entry_type AS ENUM ('CREDIT', 'DEBIT');
+CREATE TYPE trade_status AS ENUM ('PENDING', 'CONFIRMED', 'COMPLETED', 'CANCELLED', 'DISPUTED');
+CREATE TYPE user_verification_status AS ENUM ('UNVERIFIED', 'PENDING', 'VERIFIED', 'REJECTED');
+CREATE TYPE item_status AS ENUM ('ACTIVE', 'SOLD', 'REMOVED', 'DISPUTED');
+
+-- =====================================================
+-- CORE USER MANAGEMENT TABLES
+-- =====================================================
+
+-- Users table - Core user information
+CREATE TABLE users (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20),
+    date_of_birth DATE,
+    verification_status user_verification_status DEFAULT 'UNVERIFIED',
+    profile_image_url TEXT,
+    bio TEXT,
+    location_lat DECIMAL(10, 8),
+    location_lng DECIMAL(11, 8),
+    location_address TEXT,
+    timezone VARCHAR(50) DEFAULT 'UTC',
+    language VARCHAR(10) DEFAULT 'en',
+    is_active BOOLEAN DEFAULT true,
+    is_banned BOOLEAN DEFAULT false,
+    last_login_at TIMESTAMP,
+    email_verified_at TIMESTAMP,
+    phone_verified_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- =====================================================
+-- FINANCIAL SYSTEM - DOUBLE-ENTRY LEDGER
+-- =====================================================
+
+-- Accounts table - User financial accounts (NO stored balance)
+CREATE TABLE accounts (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    type account_type NOT NULL DEFAULT 'MAIN',
+    updated_at TIMESTAMP DEFAULT NOW(),
+    created_at TIMESTAMP DEFAULT NOW(),
+    UNIQUE(user_id, type)
+);
+
+-- Ledger entries - Immutable double-entry accounting
+CREATE TABLE ledger_entries (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    account_id UUID NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,
+    transaction_id UUID NOT NULL,
+    type ledger_entry_type NOT NULL,
+    amount DECIMAL(12,2) NOT NULL CHECK (amount > 0),
+    currency VARCHAR(10) DEFAULT 'CREDITS',
+    description TEXT NOT NULL,
+    metadata JSONB,
+    created_at TIMESTAMP DEFAULT NOW(),
+    idempotency_key VARCHAR(255) UNIQUE
+);
+
+-- =====================================================
+-- ITEM MANAGEMENT TABLES
+-- =====================================================
+
+-- Categories table
+CREATE TABLE categories (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR(100) NOT NULL UNIQUE,
+    description TEXT,
+    parent_id UUID REFERENCES categories(id),
+    image_url TEXT,
+    is_active BOOLEAN DEFAULT true,
+    sort_order INTEGER DEFAULT 0,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Items table - User listings
+CREATE TABLE items (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    category_id UUID NOT NULL REFERENCES categories(id),
+    title VARCHAR(200) NOT NULL,
+    description TEXT NOT NULL,
+    price_credits DECIMAL(12,2) NOT NULL CHECK (price_credits > 0),
+    condition VARCHAR(50) NOT NULL,
+    location_lat DECIMAL(10, 8),
+    location_lng DECIMAL(11, 8),
+    location_address TEXT,
+    status item_status DEFAULT 'ACTIVE',
+    is_featured BOOLEAN DEFAULT false,
+    featured_until TIMESTAMP,
+    view_count INTEGER DEFAULT 0,
+    cpsc_checked BOOLEAN DEFAULT false,
+    cpsc_result JSONB,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- =====================================================
+-- TRADING SYSTEM TABLES
+-- =====================================================
+
+-- Trades table - Trading transactions
+CREATE TABLE trades (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    item_id UUID NOT NULL REFERENCES items(id) ON DELETE CASCADE,
+    seller_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    buyer_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    price_credits DECIMAL(12,2) NOT NULL CHECK (price_credits > 0),
+    status trade_status DEFAULT 'PENDING',
+    message TEXT,
+    meetup_location_lat DECIMAL(10, 8),
+    meetup_location_lng DECIMAL(11, 8),
+    meetup_location_address TEXT,
+    meetup_scheduled_at TIMESTAMP,
+    confirmed_at TIMESTAMP,
+    completed_at TIMESTAMP,
+    cancelled_at TIMESTAMP,
+    cancelled_reason TEXT,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- =====================================================
+-- SYSTEM TABLES
+-- =====================================================
+
+-- System settings
+CREATE TABLE system_settings (
+    key VARCHAR(100) PRIMARY KEY,
+    value JSONB NOT NULL,
+    description TEXT,
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Audit log - Track all important changes
+CREATE TABLE audit_log (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID REFERENCES users(id),
+    action VARCHAR(100) NOT NULL,
+    entity_type VARCHAR(50) NOT NULL,
+    entity_id UUID NOT NULL,
+    old_values JSONB,
+    new_values JSONB,
+    ip_address INET,
+    user_agent TEXT,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- =====================================================
+-- INDEXES FOR PERFORMANCE
+-- =====================================================
+
+-- Users indexes
+CREATE INDEX idx_users_email ON users(email);
+CREATE INDEX idx_users_verification_status ON users(verification_status);
+CREATE INDEX idx_users_created_at ON users(created_at);
+
+-- Accounts indexes
+CREATE INDEX idx_accounts_user_id ON accounts(user_id);
+CREATE INDEX idx_accounts_type ON accounts(type);
+
+-- Ledger entries indexes
+CREATE INDEX idx_ledger_entries_account_id ON ledger_entries(account_id);
+CREATE INDEX idx_ledger_entries_transaction_id ON ledger_entries(transaction_id);
+CREATE INDEX idx_ledger_entries_created_at ON ledger_entries(created_at);
+CREATE INDEX idx_ledger_entries_idempotency_key ON ledger_entries(idempotency_key);
+
+-- Items indexes
+CREATE INDEX idx_items_user_id ON items(user_id);
+CREATE INDEX idx_items_category_id ON items(category_id);
+CREATE INDEX idx_items_status ON items(status);
+CREATE INDEX idx_items_price ON items(price_credits);
+CREATE INDEX idx_items_created_at ON items(created_at);
+
+-- Trades indexes
+CREATE INDEX idx_trades_item_id ON trades(item_id);
+CREATE INDEX idx_trades_seller_id ON trades(seller_id);
+CREATE INDEX idx_trades_buyer_id ON trades(buyer_id);
+CREATE INDEX idx_trades_status ON trades(status);
+CREATE INDEX idx_trades_created_at ON trades(created_at);
+
+-- Audit log indexes
+CREATE INDEX idx_audit_log_user_id ON audit_log(user_id);
+CREATE INDEX idx_audit_log_entity ON audit_log(entity_type, entity_id);
+CREATE INDEX idx_audit_log_created_at ON audit_log(created_at);

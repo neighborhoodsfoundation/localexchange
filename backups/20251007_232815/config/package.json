@@ -21,11 +21,6 @@
     "redis:install": "powershell -ExecutionPolicy Bypass -File scripts/install-redis.ps1",
     "redis:start": "powershell -ExecutionPolicy Bypass -File scripts/start-redis.ps1",
     "redis:start:with-commander": "powershell -ExecutionPolicy Bypass -File scripts/start-redis.ps1 -WithCommander",
-    "search:test": "ts-node scripts/test-search-services.ts",
-    "search:install": "powershell -ExecutionPolicy Bypass -File scripts/install-opensearch.ps1",
-    "search:start": "docker-compose -f docker-compose.opensearch.yml up -d",
-    "search:stop": "docker-compose -f docker-compose.opensearch.yml down",
-    "search:setup": "ts-node scripts/setup-search-indices.ts",
     "sync": "powershell -ExecutionPolicy Bypass -File sync-repo.ps1"
   },
   "keywords": [
