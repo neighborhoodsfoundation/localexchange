@@ -1,0 +1,22 @@
+﻿{
+    "files":  {
+                  "config":  [
+                                 "database.ts",
+                                 "env.txt",
+                                 "package.json",
+                                 "tsconfig.json"
+                             ],
+                  "database":  "localex_db_20251007_225913.sql.gz",
+                  "schema":  "schema_20251007_225913.sql",
+                  "code":  null
+              },
+    "timestamp":  "20251007_225913",
+    "backup_type":  "database",
+    "metadata":  {
+                     "version":  "1.0.0",
+                     "created_by":  "TravisWest",
+                     "hostname":  "HC-981DBY3"
+                 },
+    "backup_size":  6585,
+    "database_name":  "localex_db"
+}
