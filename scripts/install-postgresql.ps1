@@ -130,26 +130,26 @@ try {
     $createDbSQL = "CREATE DATABASE $($Config.DatabaseName);"
     $createDbResult = & psql -U postgres -d postgres -c $createDbSQL 2>&1
     
-    if ($LASTEXITCODE -eq 0 -or $createDbResult -like "*already exists*") {
-        Write-Host "✅ Database '$($Config.DatabaseName)' ready" -ForegroundColor Green
+    if ($LASTEXITCODE -eq 0 -or $createDbResult -like '*already exists*') {
+        Write-Host "Database '$($Config.DatabaseName)' ready" -ForegroundColor Green
     } else {
-        Write-Host "⚠️ Database creation: $createDbResult" -ForegroundColor Yellow
+        Write-Host "Database creation: $createDbResult" -ForegroundColor Yellow
     }
     
     # Create user
     $createUserSQL = "CREATE USER $($Config.DatabaseUser) WITH PASSWORD '$($Config.Password)';"
     $createUserResult = & psql -U postgres -d postgres -c $createUserSQL 2>&1
     
-    if ($LASTEXITCODE -eq 0 -or $createUserResult -like "*already exists*") {
-        Write-Host "✅ User '$($Config.DatabaseUser)' ready" -ForegroundColor Green
+    if ($LASTEXITCODE -eq 0 -or $createUserResult -like '*already exists*') {
+        Write-Host "User '$($Config.DatabaseUser)' ready" -ForegroundColor Green
     } else {
-        Write-Host "⚠️ User creation: $createUserResult" -ForegroundColor Yellow
+        Write-Host "User creation: $createUserResult" -ForegroundColor Yellow
     }
     
     # Grant privileges
     $grantSQL = "GRANT ALL PRIVILEGES ON DATABASE $($Config.DatabaseName) TO $($Config.DatabaseUser);"
     & psql -U postgres -d postgres -c $grantSQL | Out-Null
-    Write-Host "✅ Privileges granted to user" -ForegroundColor Green
+    Write-Host "Privileges granted to user" -ForegroundColor Green
 
     # Step 5: Test connection
     Write-Host "`n🧪 Step 5: Testing database connection..." -ForegroundColor Yellow
@@ -158,10 +158,10 @@ try {
     $testResult = & psql -U $Config.DatabaseUser -d $Config.DatabaseName -c $testSQL 2>&1
     
     if ($LASTEXITCODE -eq 0) {
-        Write-Host "✅ Database connection test successful" -ForegroundColor Green
+        Write-Host "Database connection test successful" -ForegroundColor Green
         Write-Host "PostgreSQL Version: $($testResult[2])" -ForegroundColor Gray
     } else {
-        Write-Host "❌ Database connection test failed: $testResult" -ForegroundColor Red
+        Write-Host "Database connection test failed: $testResult" -ForegroundColor Red
         exit 1
     }
 
@@ -218,7 +218,7 @@ DB_POOL_MAX=20
     Write-Host "  User: $($Config.DatabaseUser)" -ForegroundColor White
     Write-Host "  Password: $($Config.Password)" -ForegroundColor White
     
-    Write-Host "`n💡 Useful Commands:" -ForegroundColor Yellow
+    Write-Host "`nUseful Commands:" -ForegroundColor Yellow
     Write-Host "  psql -U $($Config.DatabaseUser) -d $($Config.DatabaseName)" -ForegroundColor Gray
     Write-Host "  npm run db:migrate" -ForegroundColor Gray
     Write-Host "  npm run db:status" -ForegroundColor Gray
