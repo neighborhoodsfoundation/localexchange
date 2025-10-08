@@ -96,8 +96,8 @@
 
 ## 📋 **Phase 1.4 Implementation Plan**
 
-### **Phase 1.4 - AWS S3 Storage Integration**
-**Priority**: High - Complete the data layer foundation
+### **Phase 1.4 - AWS S3 Storage Integration + E2E Testing Framework**
+**Priority**: High - Complete the data layer foundation and testing framework
 
 **Planned Components**:
 1. **S3 Setup**: Configure AWS S3 storage and CDN integration
@@ -105,15 +105,17 @@
 3. **Storage Management**: Set up storage lifecycle and cost optimization
 4. **Security**: Implement secure file access and permissions
 5. **Testing**: Create comprehensive storage functionality tests
-6. **Documentation**: Complete S3 setup and operational documentation
-7. **Narrative**: Create implementation narrative explaining the approach
+6. **E2E Testing Framework**: Implement end-to-end testing framework (pending from Phase 1.3)
+7. **Documentation**: Complete S3 setup and operational documentation
+8. **Narrative**: Create implementation narrative explaining the approach
 
 ### **Expected Deliverables**
 - AWS S3 storage service implementation
 - Image upload and processing capabilities
 - CDN integration for optimized delivery
 - Storage security and access controls
-- Comprehensive testing suite
+- Comprehensive testing suite (S3 + E2E)
+- End-to-end testing framework implementation
 - Complete documentation and operational procedures
 - Implementation narrative
 
@@ -142,8 +144,9 @@ npm run test:integration
 # 2. Install AWS SDK dependencies
 # 3. Create S3 service implementation
 # 4. Implement image processing
-# 5. Add comprehensive testing
-# 6. Create documentation
+# 5. Add comprehensive testing (S3 + E2E)
+# 6. Implement E2E testing framework
+# 7. Create documentation
 ```
 
 ---
@@ -183,9 +186,11 @@ npm run test:integration
 - CDN integration for fast delivery
 - Secure file access and permissions
 - Storage lifecycle management
+- End-to-end testing framework implementation
 
 ### **Quality Requirements**
 - Test coverage: 85%+ for storage components
+- E2E test coverage: Complete user workflow testing
 - Performance: Fast image upload and retrieval
 - Security: Secure file access and storage
 - Documentation: Complete setup and operational guides
