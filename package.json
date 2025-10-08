@@ -26,6 +26,10 @@
     "search:start": "docker-compose -f docker-compose.opensearch.yml up -d",
     "search:stop": "docker-compose -f docker-compose.opensearch.yml down",
     "search:setup": "ts-node scripts/setup-search-indices.ts",
+    "test:coverage-audit": "ts-node scripts/test-coverage-audit.ts",
+    "test:integration": "ts-node scripts/test-integration.ts",
+    "test:performance": "ts-node scripts/test-performance.ts",
+    "test:all": "npm run test:coverage-audit && npm run test:integration && npm run test:performance",
     "sync": "powershell -ExecutionPolicy Bypass -File sync-repo.ps1"
   },
   "keywords": [
