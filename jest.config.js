@@ -1,10 +1,25 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
+  rootDir: '.',
   roots: ['<rootDir>/src', '<rootDir>/tests'],
   testMatch: [
-    '**/__tests__/**/*.test.ts',
-    '**/?(*.)+(spec|test).ts'
+    '<rootDir>/src/**/__tests__/**/*.test.ts',
+    '<rootDir>/tests/**/*.test.ts',
+    '<rootDir>/src/**/*.spec.ts',
+    '<rootDir>/tests/**/*.spec.ts'
+  ],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/dist/',
+    '/coverage/',
+    '/backups/',
+    '/.cursor/',
+    '/.vscode/',
+    '/TIGrIA/',
+    '/\\..*/', // Ignore all dot directories
+    '.*\\.cursor.*',
+    '.*\\.vscode.*',
   ],
   transform: {
     '^.+\\.ts$': 'ts-jest',
