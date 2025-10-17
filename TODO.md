@@ -1,7 +1,8 @@
 # LocalEx Development TODO
 
-## 🎯 **Current Sprint: Foundation Setup**
-*Priority: Critical Foundation - Must Complete*
+## 🎯 **Current Sprint: Phase 2 Planning Complete ✅**
+*Status: Phase 1 Complete + Phase 2 Planning Complete - Ready for Legal Review*  
+*Next: Legal/Financial Review → Phase 2 Implementation*
 
 ### Database & Core Infrastructure
 - [x] **PostgreSQL Setup** ✅ COMPLETE
@@ -47,26 +48,73 @@
   - [x] Complete documentation (setup guide, operational guide, API reference)
   - [x] **Implementation Narrative**: Comprehensive why, what, and how documentation
 
-### Core Context Implementation
+### Phase 2 Planning Checklist
+- [x] **Phase 2 Requirements** ✅ COMPLETE
+  - [x] User Context requirements (including payment methods)
+  - [x] Item Context requirements (including AI valuation)
+  - [x] Credits Context requirements (including fee charging)
+  - [x] Trading Context requirements (including Safe Zones)
+
+- [x] **Revenue Model Documentation** ✅ COMPLETE
+  - [x] Fee structure defined ($1.99 + 3.75% = $18.98/trade)
+  - [x] Stripe payment processing architecture
+  - [x] AI item valuation system design
+  - [x] Database schema for payments
+  - [x] App Store compliance analysis
+  - [x] Revenue projections ($630K-$63M annually)
+
+- [x] **Technical Architecture v6** ✅ COMPLETE
+  - [x] Updated with revenue model
+  - [x] Payment API endpoints defined
+  - [x] PostGIS Safe Zone system
+  - [x] Privacy architecture (escrow-gated photos)
+  - [x] Implementation roadmap (13-14 weeks)
+
+- [x] **Phase 2.0 Narrative** ✅ COMPLETE
+  - [x] Business case documented
+  - [x] Technical implementation plan
+  - [x] Risk analysis and mitigation
+  - [x] Success criteria defined
+
+- [ ] **BEFORE Implementation: Legal & Compliance** ⚠️ CRITICAL
+  - [ ] Legal consultation on App Store compliance ($2K-$5K)
+  - [ ] Financial consultant on money transmission ($5K-$10K)
+  - [ ] Stripe business account setup
+  - [ ] App Store positioning approved
+
+### Core Context Implementation (After Legal Approval)
 - [ ] **User Context**
   - [ ] User registration and authentication
+  - [ ] Display name generation (auto, anonymous)
   - [ ] Profile management and verification
+  - [ ] Payment method storage (Stripe) 💳 **NEW**
+  - [ ] Photo access control (escrow-gated) 🔐 **NEW**
   - [ ] Privacy controls and DSR handling
 
 - [ ] **Item Context**
   - [ ] Item listing and categorization
-  - [ ] Image upload and management
+  - [ ] Image upload and management (1-12 photos)
+  - [ ] AI item valuation (for fee calculation) 🤖 **NEW**
   - [ ] CPSC integration for safety checks
-
-- [ ] **Trading Context**
-  - [ ] Trade negotiation system
-  - [ ] Escrow management
-  - [ ] Trade completion and feedback
+  - [ ] Search integration (OpenSearch)
 
 - [ ] **Credits Context**
   - [ ] Credit balance management
+  - [ ] Escrow management (lock/release)
+  - [ ] Fee charging (platform + marketplace) 💳 **NEW**
+  - [ ] Payment refund logic 💳 **NEW**
   - [ ] BTC conversion system
   - [ ] Transaction history and auditing
+
+- [ ] **Trading Context**
+  - [ ] Trade negotiation system (offer/counter)
+  - [ ] Safe Zone recommendation system (PostGIS) 🗺️ **NEW**
+  - [ ] Location coordination (midpoint, fairness) 🗺️ **NEW**
+  - [ ] Time coordination (±15min window) 🗺️ **NEW**
+  - [ ] Escrow execution + identity revelation 🔐 **NEW**
+  - [ ] Arrival tracking
+  - [ ] Trade completion and feedback
+  - [ ] Dispute handling
 
 ## 🚀 **Next Sprint: API & Frontend**
 *Priority: High - Operational Excellence*
