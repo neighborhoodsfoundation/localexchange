@@ -164,6 +164,7 @@ export interface GenericAvatar {
   textColor: string;
   icon: string;
   displayName: string;
+  size: number;
 }
 
 // ============================================================================
@@ -373,32 +374,4 @@ export type VerificationMethod = 'EMAIL' | 'SMS' | 'DOCUMENT';
 // ============================================================================
 // EXPORT ALL TYPES
 // ============================================================================
-
-export type {
-  User,
-  UserProfile,
-  UserIdentity,
-  AuthUser,
-  LoginRequest,
-  LoginResponse,
-  RegisterRequest,
-  RegisterResponse,
-  PasswordResetRequest,
-  PasswordResetConfirmRequest,
-  DisplayNameConfig,
-  DisplayNameGeneration,
-  AvatarConfig,
-  GenericAvatar,
-  VerificationDocument,
-  PrivacySettings,
-  UserSettings,
-  NotificationSettings,
-  UserPreferences,
-  UserSession,
-  DeviceInfo,
-  UserListResponse,
-  UserSearchResponse,
-  SearchFilters,
-  UserError,
-  UserValidationRules
-};
+// All types are already exported individually above

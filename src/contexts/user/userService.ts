@@ -25,7 +25,7 @@ import {
 // API CONFIGURATION
 // ============================================================================
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+const API_BASE_URL = process.env['REACT_APP_API_URL'] || 'http://localhost:3001/api';
 const API_ENDPOINTS = {
   AUTH: {
     LOGIN: '/auth/login',
@@ -63,11 +63,13 @@ class HttpClient {
   }
 
   private loadToken(): void {
-    this.token = localStorage.getItem('auth_token');
+    if (typeof window !== 'undefined' && window.localStorage) {
+      this.token = window.localStorage.getItem('auth_token');
+    }
   }
 
-  private getHeaders(): HeadersInit {
-    const headers: HeadersInit = {
+  private getHeaders(): Record<string, string> {
+    const headers: Record<string, string> = {
       'Content-Type': 'application/json'
     };
 
@@ -81,7 +83,7 @@ class HttpClient {
   private async handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
       const error = await response.json().catch(() => ({}));
-      throw new Error(error.message || `HTTP ${response.status}`);
+      throw new Error((error as Error).message || `HTTP ${response.status}`);
     }
 
     return response.json();
@@ -100,7 +102,7 @@ class HttpClient {
     const response = await fetch(`${this.baseURL}${endpoint}`, {
       method: 'POST',
       headers: this.getHeaders(),
-      body: data ? JSON.stringify(data) : undefined
+      body: data ? JSON.stringify(data) : null
     });
 
     return this.handleResponse<T>(response);
@@ -110,7 +112,7 @@ class HttpClient {
     const response = await fetch(`${this.baseURL}${endpoint}`, {
       method: 'PUT',
       headers: this.getHeaders(),
-      body: data ? JSON.stringify(data) : undefined
+      body: data ? JSON.stringify(data) : null
     });
 
     return this.handleResponse<T>(response);
@@ -127,12 +129,17 @@ class HttpClient {
 
   setToken(token: string): void {
     this.token = token;
-    localStorage.setItem('auth_token', token);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      window.localStorage.setItem('auth_token', token);
+    }
   }
 
   clearToken(): void {
     this.token = null;
-    localStorage.removeItem('auth_token');
+    if (typeof window !== 'undefined' && window.localStorage) {
+      window.localStorage.removeItem('auth_token');
+      window.localStorage.removeItem('refresh_token');
+    }
   }
 }
 
@@ -161,7 +168,7 @@ class UserService {
       this.http.setToken(response.token);
       return response;
     } catch (error) {
-      throw new Error(`Login failed: ${error.message}`);
+      throw new Error(`Login failed: ${(error as Error).message}`);
     }
   }
 
@@ -398,17 +405,25 @@ class UserService {
   }
 
   isAuthenticated(): boolean {
-    return localStorage.getItem('auth_token') !== null;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return window.localStorage.getItem('auth_token') !== null;
+    }
+    return false;
   }
 
   getToken(): string | null {
-    return localStorage.getItem('auth_token');
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return window.localStorage.getItem('auth_token');
+    }
+    return null;
   }
 
   clearSession(): void {
     this.http.clearToken();
-    localStorage.removeItem('auth_token');
-    localStorage.removeItem('refresh_token');
+    if (typeof window !== 'undefined' && window.localStorage) {
+      window.localStorage.removeItem('auth_token');
+      window.localStorage.removeItem('refresh_token');
+    }
   }
 }
 

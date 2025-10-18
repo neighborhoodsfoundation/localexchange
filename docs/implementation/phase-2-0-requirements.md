@@ -53,10 +53,10 @@ This document serves as the **authoritative requirements specification** for Pha
 **Estimated Duration**: 2.5 weeks  
 
 ### **Context 2: Item Context** 📦
-**Purpose**: Item listings, search, categories  
-**Complexity**: Medium  
+**Purpose**: Item listings, search, categories, AI-powered valuation  
+**Complexity**: High (includes AI features)  
 **Dependencies**: User Context  
-**Estimated Duration**: 2 weeks  
+**Estimated Duration**: 4 weeks (includes AI integration)  
 
 ### **Context 3: Credits Context** 💰
 **Purpose**: Virtual currency, escrow, transactions  
@@ -70,8 +70,8 @@ This document serves as the **authoritative requirements specification** for Pha
 **Dependencies**: User, Item, Credits Contexts  
 **Estimated Duration**: 4 weeks  
 
-**Total Phase 2 Estimated Duration**: **13-14 weeks** (3-3.5 months)  
-*Updated: Includes payment processing implementation (2 weeks)*
+**Total Phase 2 Estimated Duration**: **15-16 weeks** (3.5-4 months)  
+*Updated: Includes AI features integration (4 weeks) and payment processing implementation (2 weeks)*
 
 ---
 
@@ -869,6 +869,26 @@ async revealIdentityInformation(tradeId: string): Promise<void> {
 - **Fallback**: If <3 comparables, use depreciation from user-provided retail price
 - **Fallback**: If no retail price, use category average
 - **Fallback**: If no data, prompt manual entry (admin review required)
+
+**FR-I7: AI Image Recognition** 🤖 (**NEW - Enhanced User Experience**)
+- **Must**: Google Vision API integration for automatic item identification
+- **Must**: Extract brand, model, and category from item photos
+- **Must**: Assess item condition from visual analysis
+- **Must**: Generate item description suggestions
+- **Must**: Validate photo quality and suggest improvements
+- **Should**: Detect counterfeit items (brand verification)
+- **Should**: Suggest better photo angles for listing
+- **Should**: Auto-tag items with relevant keywords
+
+**FR-I8: LLM Chatbot Integration** 🤖 (**NEW - User Guidance**)
+- **Must**: OpenAI GPT-4 integration for conversational AI
+- **Must**: Item-specific guidance and recommendations
+- **Must**: Valuation explanation and pricing advice
+- **Must**: Listing optimization suggestions
+- **Must**: Market trend analysis and insights
+- **Must**: User education and onboarding assistance
+- **Should**: Multi-language support for diverse users
+- **Should**: Context-aware responses based on user history
 
 #### **Non-Functional Requirements**
 

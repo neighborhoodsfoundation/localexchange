@@ -45,7 +45,7 @@ const COLOR_SCHEMES = [
 /**
  * Generates a generic avatar for a user based on their display name
  */
-export const generateAvatar = (displayName: string, size: number = 64): GenericAvatar => {
+const generateAvatar = (displayName: string, size: number = 64): GenericAvatar => {
   // Extract initials from display name
   const initials = extractInitials(displayName);
   
@@ -53,8 +53,8 @@ export const generateAvatar = (displayName: string, size: number = 64): GenericA
   const colorScheme = generateColorScheme(displayName);
   
   return {
-    backgroundColor: colorScheme.bg,
-    textColor: colorScheme.text,
+    backgroundColor: colorScheme?.bg || '#3B82F6',
+    textColor: colorScheme?.text || '#FFFFFF',
     icon: initials,
     displayName,
     size
@@ -64,7 +64,7 @@ export const generateAvatar = (displayName: string, size: number = 64): GenericA
 /**
  * Extracts initials from display name
  */
-export const extractInitials = (displayName: string): string => {
+const extractInitials = (displayName: string): string => {
   // Remove numbers and underscores
   const cleanName = displayName.replace(/[_\d]/g, '');
   
@@ -73,7 +73,7 @@ export const extractInitials = (displayName: string): string => {
   
   if (match) {
     const [, adjective, noun] = match;
-    return (adjective[0] + noun[0]).toUpperCase();
+    return ((adjective?.[0] || '') + (noun?.[0] || '')).toUpperCase();
   }
   
   // Fallback: use first two characters
@@ -83,7 +83,7 @@ export const extractInitials = (displayName: string): string => {
 /**
  * Generates a color scheme based on display name hash
  */
-export const generateColorScheme = (displayName: string) => {
+const generateColorScheme = (displayName: string) => {
   // Simple hash function
   let hash = 0;
   for (let i = 0; i < displayName.length; i++) {
@@ -100,7 +100,7 @@ export const generateColorScheme = (displayName: string) => {
 /**
  * Generates avatar URL for display
  */
-export const generateAvatarUrl = (displayName: string, size: number = 64): string => {
+const generateAvatarUrl = (displayName: string, size: number = 64): string => {
   const avatar = generateAvatar(displayName, size);
   
   // Create SVG data URL
@@ -113,7 +113,7 @@ export const generateAvatarUrl = (displayName: string, size: number = 64): strin
 /**
  * Creates SVG for avatar
  */
-export const createAvatarSVG = (avatar: GenericAvatar): string => {
+const createAvatarSVG = (avatar: GenericAvatar): string => {
   const { backgroundColor, textColor, icon, size } = avatar;
   
   return `
@@ -135,14 +135,14 @@ export const createAvatarSVG = (avatar: GenericAvatar): string => {
 /**
  * Generates avatar with custom size
  */
-export const generateAvatarWithSize = (displayName: string, size: number): GenericAvatar => {
+const generateAvatarWithSize = (displayName: string, size: number): GenericAvatar => {
   return generateAvatar(displayName, size);
 };
 
 /**
  * Generates avatar with custom color scheme
  */
-export const generateAvatarWithColors = (
+const generateAvatarWithColors = (
   displayName: string, 
   backgroundColor: string, 
   textColor: string
@@ -161,15 +161,15 @@ export const generateAvatarWithColors = (
 /**
  * Generates avatar with custom icon
  */
-export const generateAvatarWithIcon = (
+const generateAvatarWithIcon = (
   displayName: string, 
   icon: string
 ): GenericAvatar => {
   const colorScheme = generateColorScheme(displayName);
   
   return {
-    backgroundColor: colorScheme.bg,
-    textColor: colorScheme.text,
+    backgroundColor: colorScheme?.bg || '#3B82F6',
+    textColor: colorScheme?.text || '#FFFFFF',
     icon,
     displayName,
     size: 64
@@ -183,7 +183,7 @@ export const generateAvatarWithIcon = (
 /**
  * Validates avatar configuration
  */
-export const validateAvatarConfig = (config: Partial<AvatarConfig>): boolean => {
+const validateAvatarConfig = (config: Partial<AvatarConfig>): boolean => {
   if (config.size && (config.size < 16 || config.size > 512)) {
     return false;
   }
@@ -202,7 +202,7 @@ export const validateAvatarConfig = (config: Partial<AvatarConfig>): boolean => 
 /**
  * Validates color format
  */
-export const isValidColor = (color: string): boolean => {
+const isValidColor = (color: string): boolean => {
   // Check if it's a valid hex color
   return /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(color);
 };
@@ -214,7 +214,7 @@ export const isValidColor = (color: string): boolean => {
 /**
  * Gets available color schemes
  */
-export const getAvailableColorSchemes = () => {
+const getAvailableColorSchemes = () => {
   return COLOR_SCHEMES.map(scheme => ({
     ...scheme,
     preview: generateAvatarUrl('TestUser_1234', 32)
@@ -224,7 +224,7 @@ export const getAvailableColorSchemes = () => {
 /**
  * Gets avatar statistics
  */
-export const getAvatarStats = () => {
+const getAvatarStats = () => {
   return {
     totalColorSchemes: COLOR_SCHEMES.length,
     defaultSize: AVATAR_CONFIG.size,
@@ -236,7 +236,7 @@ export const getAvatarStats = () => {
 /**
  * Generates avatar preview
  */
-export const generateAvatarPreview = (displayName: string): {
+const generateAvatarPreview = (displayName: string): {
   small: string;
   medium: string;
   large: string;
@@ -255,44 +255,70 @@ export const generateAvatarPreview = (displayName: string): {
 /**
  * Generates cache key for avatar
  */
-export const generateAvatarCacheKey = (displayName: string, size: number): string => {
+const generateAvatarCacheKey = (displayName: string, size: number): string => {
   return `avatar_${displayName}_${size}`;
 };
 
 /**
  * Checks if avatar is cached
  */
-export const isAvatarCached = (displayName: string, size: number): boolean => {
-  const cacheKey = generateAvatarCacheKey(displayName, size);
-  return localStorage.getItem(cacheKey) !== null;
+const isAvatarCached = (displayName: string, size: number): boolean => {
+  try {
+    if (typeof globalThis !== 'undefined' && (globalThis as any).localStorage) {
+      const cacheKey = generateAvatarCacheKey(displayName, size);
+      return (globalThis as any).localStorage.getItem(cacheKey) !== null;
+    }
+    return false;
+  } catch {
+    return false;
+  }
 };
 
 /**
  * Caches avatar URL
  */
-export const cacheAvatar = (displayName: string, size: number, url: string): void => {
-  const cacheKey = generateAvatarCacheKey(displayName, size);
-  localStorage.setItem(cacheKey, url);
+const cacheAvatar = (displayName: string, size: number, url: string): void => {
+  try {
+    if (typeof globalThis !== 'undefined' && (globalThis as any).localStorage) {
+      const cacheKey = generateAvatarCacheKey(displayName, size);
+      (globalThis as any).localStorage.setItem(cacheKey, url);
+    }
+  } catch {
+    // Silently fail if localStorage is not available
+  }
 };
 
 /**
  * Gets cached avatar URL
  */
-export const getCachedAvatar = (displayName: string, size: number): string | null => {
-  const cacheKey = generateAvatarCacheKey(displayName, size);
-  return localStorage.getItem(cacheKey);
+const getCachedAvatar = (displayName: string, size: number): string | null => {
+  try {
+    if (typeof globalThis !== 'undefined' && (globalThis as any).localStorage) {
+      const cacheKey = generateAvatarCacheKey(displayName, size);
+      return (globalThis as any).localStorage.getItem(cacheKey);
+    }
+    return null;
+  } catch {
+    return null;
+  }
 };
 
 /**
  * Clears avatar cache
  */
-export const clearAvatarCache = (): void => {
-  const keys = Object.keys(localStorage);
-  keys.forEach(key => {
-    if (key.startsWith('avatar_')) {
-      localStorage.removeItem(key);
+const clearAvatarCache = (): void => {
+  try {
+    if (typeof globalThis !== 'undefined' && (globalThis as any).localStorage) {
+      const keys = Object.keys((globalThis as any).localStorage);
+      keys.forEach(key => {
+        if (key.startsWith('avatar_')) {
+          (globalThis as any).localStorage.removeItem(key);
+        }
+      });
     }
-  });
+  } catch {
+    // Silently fail if localStorage is not available
+  }
 };
 
 // ============================================================================

@@ -41,7 +41,7 @@ const DISPLAY_NAME_CONFIG: DisplayNameConfig = {
 /**
  * Generates a unique display name using adjective + noun + number pattern
  */
-export const generateDisplayName = async (): Promise<DisplayNameGeneration> => {
+const generateDisplayName = async (): Promise<DisplayNameGeneration> => {
   const { adjectives, nouns, numberRange } = DISPLAY_NAME_CONFIG;
   
   let attempts = 0;
@@ -87,7 +87,7 @@ export const generateDisplayName = async (): Promise<DisplayNameGeneration> => {
 /**
  * Checks if a display name is unique
  */
-export const checkDisplayNameUniqueness = async (displayName: string): Promise<boolean> => {
+const checkDisplayNameUniqueness = async (displayName: string): Promise<boolean> => {
   try {
     // TODO: Implement actual uniqueness check against database
     // const response = await userService.checkDisplayNameAvailability(displayName);
@@ -104,7 +104,7 @@ export const checkDisplayNameUniqueness = async (displayName: string): Promise<b
 /**
  * Validates display name format
  */
-export const validateDisplayName = (displayName: string): boolean => {
+const validateDisplayName = (displayName: string): boolean => {
   // Pattern: Adjective + Noun + _ + Number
   const pattern = /^[A-Z][a-z]+[A-Z][a-z]+_\d{4}$/;
   return pattern.test(displayName);
@@ -113,7 +113,7 @@ export const validateDisplayName = (displayName: string): boolean => {
 /**
  * Checks if display name regeneration is available
  */
-export const canRegenerateDisplayName = (lastGeneratedAt: Date): boolean => {
+const canRegenerateDisplayName = (lastGeneratedAt: Date): boolean => {
   const now = new Date();
   const cooldownMs = DISPLAY_NAME_CONFIG.regenerationCooldownDays * 24 * 60 * 60 * 1000;
   const nextAvailableAt = new Date(lastGeneratedAt.getTime() + cooldownMs);
@@ -124,7 +124,7 @@ export const canRegenerateDisplayName = (lastGeneratedAt: Date): boolean => {
 /**
  * Gets time until next regeneration is available
  */
-export const getTimeUntilRegeneration = (lastGeneratedAt: Date): number => {
+const getTimeUntilRegeneration = (lastGeneratedAt: Date): number => {
   const now = new Date();
   const cooldownMs = DISPLAY_NAME_CONFIG.regenerationCooldownDays * 24 * 60 * 60 * 1000;
   const nextAvailableAt = new Date(lastGeneratedAt.getTime() + cooldownMs);
@@ -135,7 +135,7 @@ export const getTimeUntilRegeneration = (lastGeneratedAt: Date): number => {
 /**
  * Formats time until regeneration as human-readable string
  */
-export const formatTimeUntilRegeneration = (lastGeneratedAt: Date): string => {
+const formatTimeUntilRegeneration = (lastGeneratedAt: Date): string => {
   const timeMs = getTimeUntilRegeneration(lastGeneratedAt);
   
   if (timeMs === 0) {
@@ -162,7 +162,7 @@ export const formatTimeUntilRegeneration = (lastGeneratedAt: Date): string => {
 /**
  * Analyzes display name components
  */
-export const analyzeDisplayName = (displayName: string): {
+const analyzeDisplayName = (displayName: string): {
   adjective: string;
   noun: string;
   number: string;
@@ -182,7 +182,7 @@ export const analyzeDisplayName = (displayName: string): {
   const [namePart, numberPart] = parts;
   
   // Find the split between adjective and noun (capital letter in middle)
-  const nameMatch = namePart.match(/^([A-Z][a-z]+)([A-Z][a-z]+)$/);
+  const nameMatch = namePart?.match(/^([A-Z][a-z]+)([A-Z][a-z]+)$/);
   
   if (!nameMatch) {
     return {
@@ -196,9 +196,9 @@ export const analyzeDisplayName = (displayName: string): {
   const [, adjective, noun] = nameMatch;
   
   return {
-    adjective,
-    noun,
-    number: numberPart,
+    adjective: adjective || '',
+    noun: noun || '',
+    number: numberPart || '',
     isValid: true
   };
 };
@@ -206,7 +206,7 @@ export const analyzeDisplayName = (displayName: string): {
 /**
  * Gets display name statistics
  */
-export const getDisplayNameStats = (): {
+const getDisplayNameStats = (): {
   totalAdjectives: number;
   totalNouns: number;
   totalCombinations: number;
@@ -229,7 +229,7 @@ export const getDisplayNameStats = (): {
 /**
  * Generates display name suggestions based on user preferences
  */
-export const generateDisplayNameSuggestions = async (count: number = 5): Promise<string[]> => {
+const generateDisplayNameSuggestions = async (count: number = 5): Promise<string[]> => {
   const suggestions: string[] = [];
   const { adjectives, nouns, numberRange } = DISPLAY_NAME_CONFIG;
   
@@ -248,7 +248,7 @@ export const generateDisplayNameSuggestions = async (count: number = 5): Promise
 /**
  * Generates themed display name suggestions
  */
-export const generateThemedDisplayNameSuggestions = async (
+const generateThemedDisplayNameSuggestions = async (
   theme: 'nature' | 'animals' | 'colors' | 'weather' | 'space',
   count: number = 5
 ): Promise<string[]> => {
