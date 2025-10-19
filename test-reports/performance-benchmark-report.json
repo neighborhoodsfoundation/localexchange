@@ -1,0 +1,1373 @@
+{
+  "timestamp": "2025-10-19T16:03:48.768Z",
+  "thresholds": {
+    "maxResponseTime": 2000,
+    "minThroughput": 10,
+    "maxMemoryIncrease": 100,
+    "maxCpuUsage": 80
+  },
+  "summary": {
+    "totalOperations": 1864,
+    "avgThroughput": 18.991766092018754,
+    "avgResponseTime": 89.12984361904739,
+    "totalResults": 28
+  },
+  "results": [
+    {
+      "name": "createUser",
+      "duration": 6374.0625,
+      "operations": 100,
+      "throughput": 15.688581654164826,
+      "avgResponseTime": 63.72294999999998,
+      "minResponseTime": 8.285499999999956,
+      "maxResponseTime": 107.47919999999976,
+      "p95ResponseTime": 100.52250000000004,
+      "p99ResponseTime": 107.47919999999976,
+      "memoryUsage": {
+        "before": {
+          "rss": 248569856,
+          "heapTotal": 201838592,
+          "heapUsed": 180558368,
+          "external": 7742241,
+          "arrayBuffers": 4929395
+        },
+        "after": {
+          "rss": 250798080,
+          "heapTotal": 206557184,
+          "heapUsed": 171015656,
+          "external": 7742297,
+          "arrayBuffers": 4901977
+        },
+        "delta": {
+          "rss": 2228224,
+          "heapTotal": 4718592,
+          "heapUsed": -9542712,
+          "external": 56,
+          "arrayBuffers": -27418
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 3656000,
+          "system": 828000
+        },
+        "after": {
+          "user": 3718000,
+          "system": 828000
+        },
+        "delta": {
+          "user": 62000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "authenticateUser",
+      "duration": 5457.484400000001,
+      "operations": 100,
+      "throughput": 18.323460530643015,
+      "avgResponseTime": 54.559437000000145,
+      "minResponseTime": 7.444700000000012,
+      "maxResponseTime": 108.16799999999967,
+      "p95ResponseTime": 100.35690000000068,
+      "p99ResponseTime": 108.16799999999967,
+      "memoryUsage": {
+        "before": {
+          "rss": 250810368,
+          "heapTotal": 206557184,
+          "heapUsed": 171051224,
+          "external": 7742297,
+          "arrayBuffers": 4901977
+        },
+        "after": {
+          "rss": 250810368,
+          "heapTotal": 206557184,
+          "heapUsed": 171241592,
+          "external": 7742297,
+          "arrayBuffers": 4901977
+        },
+        "delta": {
+          "rss": 0,
+          "heapTotal": 0,
+          "heapUsed": 190368,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 3718000,
+          "system": 828000
+        },
+        "after": {
+          "user": 3734000,
+          "system": 828000
+        },
+        "delta": {
+          "user": 16000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "getUserProfile",
+      "duration": 5879.912999999999,
+      "operations": 100,
+      "throughput": 17.00705435607636,
+      "avgResponseTime": 58.781995000000116,
+      "minResponseTime": 7.609199999998964,
+      "maxResponseTime": 112.65650000000096,
+      "p95ResponseTime": 100.1179000000011,
+      "p99ResponseTime": 112.65650000000096,
+      "memoryUsage": {
+        "before": {
+          "rss": 250810368,
+          "heapTotal": 206557184,
+          "heapUsed": 171280592,
+          "external": 7742297,
+          "arrayBuffers": 4901977
+        },
+        "after": {
+          "rss": 214290432,
+          "heapTotal": 169857024,
+          "heapUsed": 164892144,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": -36519936,
+          "heapTotal": -36700160,
+          "heapUsed": -6388448,
+          "external": -57236,
+          "arrayBuffers": -29802
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 3734000,
+          "system": 828000
+        },
+        "after": {
+          "user": 4500000,
+          "system": 828000
+        },
+        "delta": {
+          "user": 766000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "updateUserProfile",
+      "duration": 5931.779499999997,
+      "operations": 100,
+      "throughput": 16.858347482403897,
+      "avgResponseTime": 59.301568999999944,
+      "minResponseTime": 0.03949999999895226,
+      "maxResponseTime": 107.16100000000006,
+      "p95ResponseTime": 100.06049999999959,
+      "p99ResponseTime": 107.16100000000006,
+      "memoryUsage": {
+        "before": {
+          "rss": 214384640,
+          "heapTotal": 169857024,
+          "heapUsed": 164948656,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 214523904,
+          "heapTotal": 169857024,
+          "heapUsed": 165143584,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 139264,
+          "heapTotal": 0,
+          "heapUsed": 194928,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4515000,
+          "system": 828000
+        },
+        "after": {
+          "user": 4531000,
+          "system": 828000
+        },
+        "delta": {
+          "user": 16000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "createItem",
+      "duration": 6240.698,
+      "operations": 200,
+      "throughput": 32.04769722873948,
+      "avgResponseTime": 31.186396000000006,
+      "minResponseTime": 7.466400000001158,
+      "maxResponseTime": 67.10090000000127,
+      "p95ResponseTime": 51.30760000000009,
+      "p99ResponseTime": 58.67529999999897,
+      "memoryUsage": {
+        "before": {
+          "rss": 214548480,
+          "heapTotal": 169857024,
+          "heapUsed": 165170624,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 214953984,
+          "heapTotal": 170905600,
+          "heapUsed": 164726576,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 405504,
+          "heapTotal": 1048576,
+          "heapUsed": -444048,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4531000,
+          "system": 828000
+        },
+        "after": {
+          "user": 4593000,
+          "system": 828000
+        },
+        "delta": {
+          "user": 62000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "searchItems",
+      "duration": 6542.847300000001,
+      "operations": 200,
+      "throughput": 30.56773157460055,
+      "avgResponseTime": 32.69632249999988,
+      "minResponseTime": 8.08929999999964,
+      "maxResponseTime": 58.726199999997334,
+      "p95ResponseTime": 57.755700000001525,
+      "p99ResponseTime": 58.66440000000148,
+      "memoryUsage": {
+        "before": {
+          "rss": 215056384,
+          "heapTotal": 170905600,
+          "heapUsed": 164773840,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215437312,
+          "heapTotal": 170905600,
+          "heapUsed": 165122664,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 380928,
+          "heapTotal": 0,
+          "heapUsed": 348824,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4593000,
+          "system": 828000
+        },
+        "after": {
+          "user": 4640000,
+          "system": 828000
+        },
+        "delta": {
+          "user": 47000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "getItem",
+      "duration": 6278.7119999999995,
+      "operations": 200,
+      "throughput": 31.853666803000362,
+      "avgResponseTime": 31.3754679999996,
+      "minResponseTime": 7.459399999999732,
+      "maxResponseTime": 60.90289999999368,
+      "p95ResponseTime": 53.44520000000193,
+      "p99ResponseTime": 58.6221000000005,
+      "memoryUsage": {
+        "before": {
+          "rss": 215449600,
+          "heapTotal": 170905600,
+          "heapUsed": 165170232,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215756800,
+          "heapTotal": 169857024,
+          "heapUsed": 164689240,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 307200,
+          "heapTotal": -1048576,
+          "heapUsed": -480992,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4640000,
+          "system": 828000
+        },
+        "after": {
+          "user": 4718000,
+          "system": 843000
+        },
+        "delta": {
+          "user": 78000,
+          "system": 15000
+        }
+      }
+    },
+    {
+      "name": "updateItem",
+      "duration": 6175.803200000002,
+      "operations": 200,
+      "throughput": 32.38445162889904,
+      "avgResponseTime": 30.860188499999676,
+      "minResponseTime": 7.976299999994808,
+      "maxResponseTime": 59.00510000000213,
+      "p95ResponseTime": 57.049400000003516,
+      "p99ResponseTime": 58.906899999994494,
+      "memoryUsage": {
+        "before": {
+          "rss": 215756800,
+          "heapTotal": 169857024,
+          "heapUsed": 164736360,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215756800,
+          "heapTotal": 169857024,
+          "heapUsed": 165082672,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 0,
+          "heapTotal": 0,
+          "heapUsed": 346312,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4718000,
+          "system": 843000
+        },
+        "after": {
+          "user": 4843000,
+          "system": 843000
+        },
+        "delta": {
+          "user": 125000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "createTrade",
+      "duration": 5119.1672000000035,
+      "operations": 50,
+      "throughput": 9.767213698353116,
+      "avgResponseTime": 102.36413799999907,
+      "minResponseTime": 9.306499999998778,
+      "maxResponseTime": 201.03510000000097,
+      "p95ResponseTime": 196.2222000000038,
+      "p99ResponseTime": 201.03510000000097,
+      "memoryUsage": {
+        "before": {
+          "rss": 215760896,
+          "heapTotal": 169857024,
+          "heapUsed": 165140232,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215769088,
+          "heapTotal": 169857024,
+          "heapUsed": 165248888,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 8192,
+          "heapTotal": 0,
+          "heapUsed": 108656,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4843000,
+          "system": 843000
+        },
+        "after": {
+          "user": 4859000,
+          "system": 843000
+        },
+        "delta": {
+          "user": 16000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "makeOffer",
+      "duration": 4333.741699999999,
+      "operations": 50,
+      "throughput": 11.537374274059761,
+      "avgResponseTime": 86.65642799999972,
+      "minResponseTime": 8.313200000004144,
+      "maxResponseTime": 191.8344999999972,
+      "p95ResponseTime": 182.36590000000433,
+      "p99ResponseTime": 191.8344999999972,
+      "memoryUsage": {
+        "before": {
+          "rss": 215777280,
+          "heapTotal": 169857024,
+          "heapUsed": 165265096,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215724032,
+          "heapTotal": 169857024,
+          "heapUsed": 165363408,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": -53248,
+          "heapTotal": 0,
+          "heapUsed": 98312,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4859000,
+          "system": 843000
+        },
+        "after": {
+          "user": 4875000,
+          "system": 843000
+        },
+        "delta": {
+          "user": 16000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "confirmArrival",
+      "duration": 5665.871100000004,
+      "operations": 50,
+      "throughput": 8.824768357331665,
+      "avgResponseTime": 113.29710800000001,
+      "minResponseTime": 8.234599999996135,
+      "maxResponseTime": 205.15299999999843,
+      "p95ResponseTime": 199.9641000000047,
+      "p99ResponseTime": 205.15299999999843,
+      "memoryUsage": {
+        "before": {
+          "rss": 215724032,
+          "heapTotal": 169857024,
+          "heapUsed": 165377216,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215724032,
+          "heapTotal": 169857024,
+          "heapUsed": 165472648,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 0,
+          "heapTotal": 0,
+          "heapUsed": 95432,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4875000,
+          "system": 843000
+        },
+        "after": {
+          "user": 4875000,
+          "system": 843000
+        },
+        "delta": {
+          "user": 0,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "confirmHandoff",
+      "duration": 5891.468300000008,
+      "operations": 50,
+      "throughput": 8.48684868592095,
+      "avgResponseTime": 117.81371399999945,
+      "minResponseTime": 15.76040000001376,
+      "maxResponseTime": 206.63489999999,
+      "p95ResponseTime": 200.8875999999873,
+      "p99ResponseTime": 206.63489999999,
+      "memoryUsage": {
+        "before": {
+          "rss": 215724032,
+          "heapTotal": 169857024,
+          "heapUsed": 165487720,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215740416,
+          "heapTotal": 169857024,
+          "heapUsed": 164751800,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 16384,
+          "heapTotal": 0,
+          "heapUsed": -735920,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4875000,
+          "system": 843000
+        },
+        "after": {
+          "user": 4906000,
+          "system": 843000
+        },
+        "delta": {
+          "user": 31000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "leaveFeedback",
+      "duration": 4852.6610999999975,
+      "operations": 50,
+      "throughput": 10.303624953327159,
+      "avgResponseTime": 97.0351880000002,
+      "minResponseTime": 10.029399999999441,
+      "maxResponseTime": 205.54929999999877,
+      "p95ResponseTime": 198.71420000000217,
+      "p99ResponseTime": 205.54929999999877,
+      "memoryUsage": {
+        "before": {
+          "rss": 215752704,
+          "heapTotal": 169857024,
+          "heapUsed": 164766704,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215912448,
+          "heapTotal": 169857024,
+          "heapUsed": 164862096,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 159744,
+          "heapTotal": 0,
+          "heapUsed": 95392,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4906000,
+          "system": 843000
+        },
+        "after": {
+          "user": 4921000,
+          "system": 843000
+        },
+        "delta": {
+          "user": 15000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "search_electronics",
+      "duration": 5197.316200000001,
+      "operations": 30,
+      "throughput": 5.7722098955610965,
+      "avgResponseTime": 173.21577666666659,
+      "minResponseTime": 15.995499999989988,
+      "maxResponseTime": 310.70500000000175,
+      "p95ResponseTime": 305.5981000000029,
+      "p99ResponseTime": 310.70500000000175,
+      "memoryUsage": {
+        "before": {
+          "rss": 215912448,
+          "heapTotal": 169857024,
+          "heapUsed": 164878384,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215916544,
+          "heapTotal": 169857024,
+          "heapUsed": 164942376,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 4096,
+          "heapTotal": 0,
+          "heapUsed": 63992,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4921000,
+          "system": 843000
+        },
+        "after": {
+          "user": 4921000,
+          "system": 843000
+        },
+        "delta": {
+          "user": 0,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "search_clothing",
+      "duration": 4348.148099999991,
+      "operations": 30,
+      "throughput": 6.899489003145974,
+      "avgResponseTime": 144.92252000000008,
+      "minResponseTime": 23.761200000008103,
+      "maxResponseTime": 298.2329000000027,
+      "p95ResponseTime": 297.7939000000042,
+      "p99ResponseTime": 298.2329000000027,
+      "memoryUsage": {
+        "before": {
+          "rss": 215916544,
+          "heapTotal": 169857024,
+          "heapUsed": 164953544,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215945216,
+          "heapTotal": 169857024,
+          "heapUsed": 165016736,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 28672,
+          "heapTotal": 0,
+          "heapUsed": 63192,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4921000,
+          "system": 843000
+        },
+        "after": {
+          "user": 4953000,
+          "system": 843000
+        },
+        "delta": {
+          "user": 32000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "search_books",
+      "duration": 4949.060600000012,
+      "operations": 30,
+      "throughput": 6.061756447274041,
+      "avgResponseTime": 164.96076333333332,
+      "minResponseTime": 8.246899999998277,
+      "maxResponseTime": 308.7985999999946,
+      "p95ResponseTime": 301.9771999999939,
+      "p99ResponseTime": 308.7985999999946,
+      "memoryUsage": {
+        "before": {
+          "rss": 215945216,
+          "heapTotal": 169857024,
+          "heapUsed": 165027848,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215945216,
+          "heapTotal": 169857024,
+          "heapUsed": 165083088,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 0,
+          "heapTotal": 0,
+          "heapUsed": 55240,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4953000,
+          "system": 843000
+        },
+        "after": {
+          "user": 4953000,
+          "system": 843000
+        },
+        "delta": {
+          "user": 0,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "search_furniture",
+      "duration": 4283.272599999997,
+      "operations": 30,
+      "throughput": 7.00399036008122,
+      "avgResponseTime": 142.76856333333416,
+      "minResponseTime": 16.688300000008894,
+      "maxResponseTime": 299.34090000001015,
+      "p95ResponseTime": 294.3923000000068,
+      "p99ResponseTime": 299.34090000001015,
+      "memoryUsage": {
+        "before": {
+          "rss": 215945216,
+          "heapTotal": 169857024,
+          "heapUsed": 165094216,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215945216,
+          "heapTotal": 169857024,
+          "heapUsed": 165150480,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 0,
+          "heapTotal": 0,
+          "heapUsed": 56264,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4953000,
+          "system": 843000
+        },
+        "after": {
+          "user": 4968000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 15000,
+          "system": 16000
+        }
+      }
+    },
+    {
+      "name": "search_sports",
+      "duration": 4201.324900000007,
+      "operations": 30,
+      "throughput": 7.140604622127641,
+      "avgResponseTime": 140.03056999999973,
+      "minResponseTime": 0.2559000000037486,
+      "maxResponseTime": 291.38529999999446,
+      "p95ResponseTime": 289.94340000000375,
+      "p99ResponseTime": 291.38529999999446,
+      "memoryUsage": {
+        "before": {
+          "rss": 215945216,
+          "heapTotal": 169857024,
+          "heapUsed": 165161632,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 215945216,
+          "heapTotal": 169857024,
+          "heapUsed": 165220872,
+          "external": 7685061,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 0,
+          "heapTotal": 0,
+          "heapUsed": 59240,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4968000,
+          "system": 859000
+        },
+        "after": {
+          "user": 4968000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 0,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "concurrent_10",
+      "duration": 105.89740000000165,
+      "operations": 1,
+      "throughput": 9.443102474659288,
+      "avgResponseTime": 105.81519999999728,
+      "minResponseTime": 105.81519999999728,
+      "maxResponseTime": 105.81519999999728,
+      "p95ResponseTime": 105.81519999999728,
+      "p99ResponseTime": 105.81519999999728,
+      "memoryUsage": {
+        "before": {
+          "rss": 215945216,
+          "heapTotal": 169857024,
+          "heapUsed": 165234960,
+          "external": 7693253,
+          "arrayBuffers": 4880367
+        },
+        "after": {
+          "rss": 214761472,
+          "heapTotal": 169857024,
+          "heapUsed": 165274456,
+          "external": 7693253,
+          "arrayBuffers": 4880367
+        },
+        "delta": {
+          "rss": -1183744,
+          "heapTotal": 0,
+          "heapUsed": 39496,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4968000,
+          "system": 859000
+        },
+        "after": {
+          "user": 4984000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 16000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "concurrent_50",
+      "duration": 105.90429999999469,
+      "operations": 1,
+      "throughput": 9.442487226675878,
+      "avgResponseTime": 105.898199999996,
+      "minResponseTime": 105.898199999996,
+      "maxResponseTime": 105.898199999996,
+      "p95ResponseTime": 105.898199999996,
+      "p99ResponseTime": 105.898199999996,
+      "memoryUsage": {
+        "before": {
+          "rss": 214761472,
+          "heapTotal": 169857024,
+          "heapUsed": 165280088,
+          "external": 7693253,
+          "arrayBuffers": 4880367
+        },
+        "after": {
+          "rss": 214761472,
+          "heapTotal": 169857024,
+          "heapUsed": 165352992,
+          "external": 7693253,
+          "arrayBuffers": 4880367
+        },
+        "delta": {
+          "rss": 0,
+          "heapTotal": 0,
+          "heapUsed": 72904,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4984000,
+          "system": 859000
+        },
+        "after": {
+          "user": 4984000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 0,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "concurrent_100",
+      "duration": 97.92740000000049,
+      "operations": 1,
+      "throughput": 10.211646587165543,
+      "avgResponseTime": 97.92149999999674,
+      "minResponseTime": 97.92149999999674,
+      "maxResponseTime": 97.92149999999674,
+      "p95ResponseTime": 97.92149999999674,
+      "p99ResponseTime": 97.92149999999674,
+      "memoryUsage": {
+        "before": {
+          "rss": 214761472,
+          "heapTotal": 169857024,
+          "heapUsed": 165358512,
+          "external": 7693253,
+          "arrayBuffers": 4880367
+        },
+        "after": {
+          "rss": 214777856,
+          "heapTotal": 169857024,
+          "heapUsed": 165502400,
+          "external": 7693253,
+          "arrayBuffers": 4880367
+        },
+        "delta": {
+          "rss": 16384,
+          "heapTotal": 0,
+          "heapUsed": 143888,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4984000,
+          "system": 859000
+        },
+        "after": {
+          "user": 4984000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 0,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "concurrent_200",
+      "duration": 105.02850000000035,
+      "operations": 1,
+      "throughput": 9.521225191257578,
+      "avgResponseTime": 105.02190000000701,
+      "minResponseTime": 105.02190000000701,
+      "maxResponseTime": 105.02190000000701,
+      "p95ResponseTime": 105.02190000000701,
+      "p99ResponseTime": 105.02190000000701,
+      "memoryUsage": {
+        "before": {
+          "rss": 214806528,
+          "heapTotal": 169857024,
+          "heapUsed": 165506808,
+          "external": 7693253,
+          "arrayBuffers": 4880367
+        },
+        "after": {
+          "rss": 215023616,
+          "heapTotal": 169857024,
+          "heapUsed": 164955336,
+          "external": 7693253,
+          "arrayBuffers": 4880367
+        },
+        "delta": {
+          "rss": 217088,
+          "heapTotal": 0,
+          "heapUsed": -551472,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4984000,
+          "system": 859000
+        },
+        "after": {
+          "user": 4984000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 0,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "memory_intensive",
+      "duration": 63.288000000000466,
+      "operations": 10,
+      "throughput": 158.0078371887234,
+      "avgResponseTime": 6.305459999997401,
+      "minResponseTime": 2.452499999999418,
+      "maxResponseTime": 17.10109999999986,
+      "p95ResponseTime": 17.10109999999986,
+      "p99ResponseTime": 17.10109999999986,
+      "memoryUsage": {
+        "before": {
+          "rss": 215027712,
+          "heapTotal": 169857024,
+          "heapUsed": 164975824,
+          "external": 7693253,
+          "arrayBuffers": 4880367
+        },
+        "after": {
+          "rss": 251686912,
+          "heapTotal": 212324352,
+          "heapUsed": 186112864,
+          "external": 7693253,
+          "arrayBuffers": 4880367
+        },
+        "delta": {
+          "rss": 36659200,
+          "heapTotal": 42467328,
+          "heapUsed": 21137040,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 4984000,
+          "system": 859000
+        },
+        "after": {
+          "user": 5093000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 109000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "db_SELECT",
+      "duration": 3769.794399999999,
+      "operations": 50,
+      "throughput": 13.263322795534956,
+      "avgResponseTime": 75.38011399999988,
+      "minResponseTime": 14.659299999999348,
+      "maxResponseTime": 158.00310000000172,
+      "p95ResponseTime": 148.58750000000873,
+      "p99ResponseTime": 158.00310000000172,
+      "memoryUsage": {
+        "before": {
+          "rss": 251686912,
+          "heapTotal": 212324352,
+          "heapUsed": 186121272,
+          "external": 7693253,
+          "arrayBuffers": 4880367
+        },
+        "after": {
+          "rss": 252002304,
+          "heapTotal": 203673600,
+          "heapUsed": 165176056,
+          "external": 7693253,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 315392,
+          "heapTotal": -8650752,
+          "heapUsed": -20945216,
+          "external": 0,
+          "arrayBuffers": -8192
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 5093000,
+          "system": 859000
+        },
+        "after": {
+          "user": 5328000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 235000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "db_INSERT",
+      "duration": 4159.141600000003,
+      "operations": 50,
+      "throughput": 12.021711403141449,
+      "avgResponseTime": 83.17414599999931,
+      "minResponseTime": 8.411800000001676,
+      "maxResponseTime": 161.21340000000782,
+      "p95ResponseTime": 148.50400000000081,
+      "p99ResponseTime": 161.21340000000782,
+      "memoryUsage": {
+        "before": {
+          "rss": 252002304,
+          "heapTotal": 203673600,
+          "heapUsed": 165195824,
+          "external": 7693253,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 252002304,
+          "heapTotal": 203673600,
+          "heapUsed": 165288184,
+          "external": 7693253,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 0,
+          "heapTotal": 0,
+          "heapUsed": 92360,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 5328000,
+          "system": 859000
+        },
+        "after": {
+          "user": 5328000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 0,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "db_UPDATE",
+      "duration": 4601.134300000005,
+      "operations": 50,
+      "throughput": 10.86688558514798,
+      "avgResponseTime": 92.00656000000076,
+      "minResponseTime": 7.207699999999022,
+      "maxResponseTime": 160.05650000000605,
+      "p95ResponseTime": 157.02529999999388,
+      "p99ResponseTime": 160.05650000000605,
+      "memoryUsage": {
+        "before": {
+          "rss": 252002304,
+          "heapTotal": 203673600,
+          "heapUsed": 165301960,
+          "external": 7693253,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 252002304,
+          "heapTotal": 203673600,
+          "heapUsed": 165394152,
+          "external": 7693253,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 0,
+          "heapTotal": 0,
+          "heapUsed": 92192,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 5343000,
+          "system": 859000
+        },
+        "after": {
+          "user": 5343000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 0,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "db_DELETE",
+      "duration": 4703.47570000001,
+      "operations": 50,
+      "throughput": 10.630436551420877,
+      "avgResponseTime": 94.05790000000037,
+      "minResponseTime": 7.902700000006007,
+      "maxResponseTime": 165.38280000000668,
+      "p95ResponseTime": 151.18329999998969,
+      "p99ResponseTime": 165.38280000000668,
+      "memoryUsage": {
+        "before": {
+          "rss": 252002304,
+          "heapTotal": 203673600,
+          "heapUsed": 165407912,
+          "external": 7693253,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 252002304,
+          "heapTotal": 203673600,
+          "heapUsed": 165501552,
+          "external": 7693253,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 0,
+          "heapTotal": 0,
+          "heapUsed": 93640,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 5343000,
+          "system": 859000
+        },
+        "after": {
+          "user": 5375000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 32000,
+          "system": 0
+        }
+      }
+    },
+    {
+      "name": "db_JOIN",
+      "duration": 4225.8554,
+      "operations": 50,
+      "throughput": 11.83192401708776,
+      "avgResponseTime": 84.5055460000006,
+      "minResponseTime": 8.411500000001979,
+      "maxResponseTime": 156.7396000000008,
+      "p95ResponseTime": 146.62260000000242,
+      "p99ResponseTime": 156.7396000000008,
+      "memoryUsage": {
+        "before": {
+          "rss": 252002304,
+          "heapTotal": 203673600,
+          "heapUsed": 165515376,
+          "external": 7693253,
+          "arrayBuffers": 4872175
+        },
+        "after": {
+          "rss": 252002304,
+          "heapTotal": 203673600,
+          "heapUsed": 165606560,
+          "external": 7693253,
+          "arrayBuffers": 4872175
+        },
+        "delta": {
+          "rss": 0,
+          "heapTotal": 0,
+          "heapUsed": 91184,
+          "external": 0,
+          "arrayBuffers": 0
+        }
+      },
+      "cpuUsage": {
+        "before": {
+          "user": 5375000,
+          "system": 859000
+        },
+        "after": {
+          "user": 5390000,
+          "system": 859000
+        },
+        "delta": {
+          "user": 15000,
+          "system": 0
+        }
+      }
+    }
+  ],
+  "environment": {
+    "nodeVersion": "v22.20.0",
+    "platform": "win32",
+    "arch": "x64",
+    "memory": {
+      "rss": 255750144,
+      "heapTotal": 203673600,
+      "heapUsed": 165841216,
+      "external": 7693253,
+      "arrayBuffers": 4880367
+    }
+  }
+}

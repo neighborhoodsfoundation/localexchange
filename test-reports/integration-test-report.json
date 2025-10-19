@@ -1,0 +1,41 @@
+{
+  "timestamp": "2025-10-19T16:00:23.945Z",
+  "totalTime": 21542,
+  "summary": {
+    "total": 4,
+    "successful": 0,
+    "failed": 4,
+    "criticalFailures": 4
+  },
+  "results": [
+    {
+      "suite": "Complete Trading Flow",
+      "success": false,
+      "duration": 5065,
+      "error": "Command failed: npx jest \"tests\\integration\\complete-trading-flow.test.ts\" --verbose --detectOpenHandles --forceExit --testTimeout=300000"
+    },
+    {
+      "suite": "Load Testing",
+      "success": false,
+      "duration": 3302,
+      "error": "Command failed: npx jest \"tests\\integration\\load-testing.test.ts\" --verbose --detectOpenHandles --forceExit --testTimeout=600000"
+    },
+    {
+      "suite": "Security Audit",
+      "success": false,
+      "duration": 3605,
+      "error": "Command failed: npx jest \"tests\\integration\\security-audit.test.ts\" --verbose --detectOpenHandles --forceExit --testTimeout=300000"
+    },
+    {
+      "suite": "Beta Testing",
+      "success": false,
+      "duration": 2994,
+      "error": "Command failed: npx jest \"tests\\integration\\beta-testing.test.ts\" --verbose --detectOpenHandles --forceExit --testTimeout=900000"
+    }
+  ],
+  "environment": {
+    "nodeVersion": "v22.20.0",
+    "platform": "win32",
+    "arch": "x64"
+  }
+}

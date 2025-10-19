@@ -1,0 +1,68 @@
+﻿{
+    "Metadata":  {
+                     "CreatedBy":  "TravisWest",
+                     "CreatedOn":  "HC-981DBY3",
+                     "TotalSize":  3.19,
+                     "TotalFiles":  229
+                 },
+    "Version":  "2.0",
+    "BackupId":  "20251019_121544",
+    "Timestamp":  "20251019_121544",
+    "ProjectRoot":  "C:\\Users\\TravisWest\\OneDrive - Health Catalyst\\Desktop\\localex",
+    "Items":  {
+                  "Config":  [
+                                 "docker-compose*.yml",
+                                 "opensearch.yml",
+                                 "redis.conf",
+                                 ".env*"
+                             ],
+                  "Code":  [
+                               "src",
+                               "tests",
+                               "scripts",
+                               "package.json",
+                               "package-lock.json",
+                               "tsconfig.json",
+                               "jest.config.js",
+                               "env.example"
+                           ],
+                  "Documentation":  "docs",
+                  "Database":  [
+                                   "schema_20251007_225913.sql",
+                                   "001_initial_schema.sql",
+                                   "001_simple_schema.sql",
+                                   "002_balance_triggers.sql",
+                                   "schema_20251007_232815.sql",
+                                   "001_initial_schema.sql",
+                                   "001_simple_schema.sql",
+                                   "002_balance_triggers.sql",
+                                   "schema_20251008_000712.sql",
+                                   "001_initial_schema.sql",
+                                   "001_simple_schema.sql",
+                                   "002_balance_triggers.sql",
+                                   "schema_20251009_083458.sql",
+                                   "001_initial_schema.sql",
+                                   "001_simple_schema.sql",
+                                   "002_balance_triggers.sql",
+                                   "schema_20251016_194040.sql",
+                                   "001_initial_schema.sql",
+                                   "001_simple_schema.sql",
+                                   "002_balance_triggers.sql",
+                                   "schema_20251018_133556.sql",
+                                   "001_initial_schema.sql",
+                                   "001_simple_schema.sql",
+                                   "002_balance_triggers.sql",
+                                   "schema_20251018_205134.sql",
+                                   "001_initial_schema.sql",
+                                   "001_simple_schema.sql",
+                                   "002_balance_triggers.sql",
+                                   "001_initial_schema.sql",
+                                   "001_simple_schema.sql",
+                                   "002_balance_triggers.sql",
+                                   "001_initial_schema.sql",
+                                   "001_simple_schema.sql",
+                                   "002_balance_triggers.sql"
+                               ]
+              },
+    "BackupPath":  "C:\\Users\\TravisWest\\OneDrive - Health Catalyst\\Desktop\\localex\\backups\\20251019_121544"
+}
