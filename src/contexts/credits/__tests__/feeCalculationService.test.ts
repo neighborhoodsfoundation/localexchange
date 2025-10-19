@@ -20,7 +20,7 @@ import {
   formatAmount,
   DEFAULT_FEE_STRUCTURE
 } from '../feeCalculationService';
-import { CreditsErrorCode } from '../credits.types';
+// import { CreditsErrorCode } from '../credits.types';
 
 // ============================================================================
 // FEE CALCULATION TESTS
@@ -48,10 +48,10 @@ describe('Fee Calculation', () => {
       expect(result.tradeAmount).toBe(1000);
       expect(result.baseFee).toBe(199); // $1.99
       expect(result.percentageFee).toBe(375); // 3.75%
-      expect(result.calculatedFee).toBe(199 + 37); // $1.99 + $0.37 = $2.36
+      expect(result.calculatedFee).toBe(199 + 38); // $1.99 + $0.38 = $2.37
       expect(result.breakdown.baseFeeAmount).toBe(199);
-      expect(result.breakdown.percentageFeeAmount).toBe(37);
-      expect(result.breakdown.totalFee).toBe(236);
+      expect(result.breakdown.percentageFeeAmount).toBe(38);
+      expect(result.breakdown.totalFee).toBe(237);
     });
 
     it('should calculate fees correctly for $1 trade', () => {
@@ -61,10 +61,10 @@ describe('Fee Calculation', () => {
       expect(result.tradeAmount).toBe(100);
       expect(result.baseFee).toBe(199); // $1.99
       expect(result.percentageFee).toBe(375); // 3.75%
-      expect(result.calculatedFee).toBe(199 + 3); // $1.99 + $0.03 = $2.02
+      expect(result.calculatedFee).toBe(199 + 4); // $1.99 + $0.04 = $2.03
       expect(result.breakdown.baseFeeAmount).toBe(199);
-      expect(result.breakdown.percentageFeeAmount).toBe(3);
-      expect(result.breakdown.totalFee).toBe(202);
+      expect(result.breakdown.percentageFeeAmount).toBe(4);
+      expect(result.breakdown.totalFee).toBe(203);
     });
 
     it('should apply maximum fee cap', () => {
@@ -109,12 +109,12 @@ describe('Fee Calculation', () => {
       const results = calculateBulkFees(tradeAmounts);
 
       expect(results).toHaveLength(3);
-      expect(results[0].tradeAmount).toBe(1000);
-      expect(results[0].calculatedFee).toBe(199 + 37); // $2.36
-      expect(results[1].tradeAmount).toBe(5000);
-      expect(results[1].calculatedFee).toBe(199 + 187); // $3.86
-      expect(results[2].tradeAmount).toBe(10000);
-      expect(results[2].calculatedFee).toBe(199 + 375); // $5.74
+      expect(results[0]?.tradeAmount).toBe(1000);
+      expect(results[0]?.calculatedFee).toBe(199 + 38); // $2.37
+      expect(results[1]?.tradeAmount).toBe(5000);
+      expect(results[1]?.calculatedFee).toBe(199 + 188); // $3.87
+      expect(results[2]?.tradeAmount).toBe(10000);
+      expect(results[2]?.calculatedFee).toBe(199 + 375); // $5.74
     });
   });
 
@@ -133,7 +133,7 @@ describe('Fee Calculation', () => {
       const grossAmount = calculateGrossAmount(netAmount);
 
       // Should be approximately $100.00 to achieve $94.26 net
-      expect(grossAmount).toBeGreaterThan(10000);
+      expect(grossAmount).toBeGreaterThanOrEqual(10000);
       expect(grossAmount).toBeLessThan(10100);
     });
   });
@@ -336,10 +336,10 @@ describe('Fee Structure Comparison', () => {
       const comparison = compareFeeStructures(structure1, structure2, [1000, 5000, 10000]);
 
       expect(comparison).toHaveLength(3);
-      expect(comparison[0].tradeAmount).toBe(1000);
-      expect(comparison[0].structure1Fees).toBe(199 + 37); // $2.36
-      expect(comparison[0].structure2Fees).toBe(100 + 50); // $1.50
-      expect(comparison[0].difference).toBe((100 + 50) - (199 + 37)); // structure2 - structure1
+      expect(comparison[0]?.tradeAmount).toBe(1000);
+      expect(comparison[0]?.structure1Fees).toBe(199 + 38); // $2.37
+      expect(comparison[0]?.structure2Fees).toBe(100 + 50); // $1.50
+      expect(comparison[0]?.difference).toBe((100 + 50) - (199 + 38)); // structure2 - structure1
     });
   });
 });

@@ -58,7 +58,7 @@ describe('Escrow Account Creation', () => {
 
   describe('createEscrowAccount', () => {
     it('should create escrow account successfully', async () => {
-      const mockEscrowAccount = {
+      // const mockEscrowAccount = {
         id: 'escrow_123',
         tradeId: 'trade_123',
         buyerAccountId: 'buyer_acc',
@@ -291,7 +291,7 @@ describe('Escrow Release', () => {
       expect(result.escrowAccount?.status).toBe(EscrowStatus.RELEASED);
       expect(result.escrowAccount?.releasedAt).toBeDefined();
       expect(result.transactions).toHaveLength(1);
-      expect(result.transactions?.[0].id).toBe('txn_release_123');
+      expect(result.transactions?.[0]?.id).toBe('txn_release_123');
     });
 
     it('should fail if escrow account not found', async () => {
@@ -433,7 +433,7 @@ describe('Escrow Refund', () => {
       expect(result.escrowAccount?.status).toBe(EscrowStatus.REFUNDED);
       expect(result.escrowAccount?.refundedAt).toBeDefined();
       expect(result.transactions).toHaveLength(1);
-      expect(result.transactions?.[0].id).toBe('txn_refund_123');
+      expect(result.transactions?.[0]?.id).toBe('txn_refund_123');
     });
 
     it('should process partial refund', async () => {
@@ -485,7 +485,7 @@ describe('Escrow Refund', () => {
       expect(result.escrowAccount).toBeDefined();
       expect(result.escrowAccount?.status).toBe(EscrowStatus.REFUNDED);
       expect(result.transactions).toHaveLength(1);
-      expect(result.transactions?.[0].amount).toBe(3000);
+      expect(result.transactions?.[0]?.amount).toBe(3000);
     });
 
     it('should fail if refund amount exceeds escrow amount', async () => {

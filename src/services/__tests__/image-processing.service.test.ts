@@ -6,17 +6,7 @@
 // Mock dependencies
 jest.mock('sharp');
 jest.mock('../storage.service');
-jest.mock('../config/s3', () => ({
-  imageConfig: {
-    maxWidth: 4000,
-    maxHeight: 4000,
-    quality: 85,
-    thumbnailSize: 300,
-    mediumSize: 800,
-    largeSize: 1200,
-    enableWebP: true,
-    stripExif: true,
-  },
+jest.mock('../../config/s3', () => ({
   storageConfig: {
     maxFileSize: 10485760, // 10MB
     allowedTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],

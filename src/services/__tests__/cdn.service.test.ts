@@ -6,8 +6,8 @@
 // Mock dependencies
 jest.mock('@aws-sdk/client-cloudfront');
 jest.mock('../cache.service');
-jest.mock('../config/s3', () => ({
-  s3Config: {
+jest.mock('../../config/s3', () => ({
+  storageConfig: {
     bucket: 'test-bucket',
     region: 'us-east-1',
     cdnUrl: 'https://cdn.example.com',

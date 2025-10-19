@@ -7,14 +7,12 @@
 jest.mock('@aws-sdk/client-s3');
 jest.mock('@aws-sdk/s3-request-presigner');
 jest.mock('@aws-sdk/lib-storage');
-jest.mock('../config/s3', () => ({
-  getS3Client: jest.fn(() => mockS3Client),
-  s3Config: {
+jest.mock('../../config/s3', () => ({
+  s3Client: mockS3Client,
+  storageConfig: {
     bucket: 'test-bucket',
     region: 'us-east-1',
     cdnUrl: 'https://cdn.example.com',
-  },
-  storageConfig: {
     maxFileSize: 10485760, // 10MB
     allowedTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/gif'],
     tempExpiry: 86400000,
