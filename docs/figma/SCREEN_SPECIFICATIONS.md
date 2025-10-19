@@ -90,7 +90,7 @@ Specifications:
 
 ### **Screen 3: Profile Setup Screen**
 ```
-Layout: Form with profile photo upload
+Layout: Form with profile photo upload and detailed information
 Background: White
 
 Elements:
@@ -103,14 +103,34 @@ Elements:
 │           [Profile Photo]           │
 │        "Tap to add photo"           │
 │                                     │
-│  Display Name                       │
+│  Full Name                          │
 │  ┌─────────────────────────────────┐ │
-│  │ Alex_Chen                      │ │
+│  │ Alex Chen                      │ │
 │  └─────────────────────────────────┘ │
 │                                     │
-│  Location                           │
+│  City                               │
 │  ┌─────────────────────────────────┐ │
-│  │ Seattle, WA        [Location]  │ │
+│  │ Seattle        [Autocomplete]  │ │
+│  └─────────────────────────────────┘ │
+│                                     │
+│  State                              │
+│  ┌─────────────────────────────────┐ │
+│  │ Washington          [Dropdown] │ │
+│  └─────────────────────────────────┘ │
+│                                     │
+│  ZIP Code                           │
+│  ┌─────────────────────────────────┐ │
+│  │ 98101                          │ │
+│  └─────────────────────────────────┘ │
+│                                     │
+│  Phone Number                       │
+│  ┌─────────────────────────────────┐ │
+│  │ (206) 555-0123                 │ │
+│  └─────────────────────────────────┘ │
+│                                     │
+│  Neighborhood                       │
+│  ┌─────────────────────────────────┐ │
+│  │ Capitol Hill                   │ │
 │  └─────────────────────────────────┘ │
 │                                     │
 │  Bio (Optional)                     │
@@ -126,8 +146,12 @@ Elements:
 Specifications:
 - Profile photo: 100px circle, dashed border
 - Photo placeholder: Camera icon + text
-- Display name: Auto-generated suggestion
-- Location: GPS detection + manual entry
+- Full Name: Required field, 2-50 characters
+- City: Required with autocomplete suggestions
+- State: Required dropdown selection
+- ZIP Code: Required with 5-digit validation
+- Phone: Required with formatting and validation
+- Neighborhood: Required with suggestions
 - Bio: Multi-line text area, optional
 - Complete Setup: Primary button (#5C3D2E), full width
 ```
@@ -171,7 +195,7 @@ Specifications:
 
 ### **Screen 5: Home Dashboard**
 ```
-Layout: Tab navigation with main content
+Layout: Tab navigation with main content and currency toggle
 Background: #F9FAFB
 
 Elements:
@@ -180,9 +204,15 @@ Elements:
 │                                     │
 │    "Good morning, Alex!"            │
 │                                     │
+│  [Currency Toggle]                  │
+│  ┌─────────────────────────────────┐ │
+│  │ App Credits │ Local Currency   │ │
+│  └─────────────────────────────────┘ │
+│                                     │
 │  [Featured Items Carousel]          │
 │  ┌─────┐ ┌─────┐ ┌─────┐           │
 │  │Item1│ │Item2│ │Item3│ →         │
+│  │$120 │ │$85  │ │$200 │           │
 │  └─────┘ └─────┘ └─────┘           │
 │                                     │
 │  [Quick Actions]                    │
@@ -205,7 +235,8 @@ Elements:
 Specifications:
 - Header: Logo + search icon + profile avatar
 - Greeting: Personalized with user name
-- Carousel: Horizontal scrollable items
+- Currency Toggle: App Credits (green) / Local Currency (orange)
+- Carousel: Horizontal scrollable items with prices
 - Quick actions: 2 prominent buttons
 - Recent activity: List of recent actions
 - Bottom navigation: 5 tabs with icons
@@ -213,7 +244,7 @@ Specifications:
 
 ### **Screen 6: Search/Discovery Screen**
 ```
-Layout: Search interface with filters and results
+Layout: Search interface with filters, results, and currency toggle
 Background: White
 
 Elements:
@@ -223,6 +254,11 @@ Elements:
 │ ┌─────────────────────────────────┐ │
 │ │ 🔍 coffee table                │ │
 │ └─────────────────────────────────┘ │
+│                                     │
+│  [Currency Toggle]                  │
+│  ┌─────────────────────────────────┐ │
+│  │ App Credits │ Local Currency   │ │
+│  └─────────────────────────────────┘ │
 │                                     │
 │ [Filters] [Sort] [Map View]         │
 │                                     │
@@ -245,6 +281,7 @@ Elements:
 
 Specifications:
 - Search bar: Prominent with search icon
+- Currency Toggle: App Credits (green) / Local Currency (orange)
 - Filter buttons: Horizontal scrollable
 - Results: Grid layout, 2 columns
 - Item cards: Image + title + price + distance
@@ -291,7 +328,54 @@ Specifications:
 - Photo limit: Up to 12 photos
 ```
 
-### **Screen 8: Item Details Screen**
+### **Screen 8: User Profile Screen**
+```
+Layout: Profile information display and edit functionality
+Background: White
+
+Elements:
+┌─────────────────────────────────────┐
+│ ← Back    My Profile               │
+│                                     │
+│           [Profile Photo]           │
+│                                     │
+│         Alex Chen                   │
+│      Capitol Hill, Seattle          │
+│         WA 98101                    │
+│                                     │
+│  Contact Information                │
+│  ┌─────────────────────────────────┐ │
+│  │ 📱 (206) 555-0123              │ │
+│  │ 📍 Capitol Hill, Seattle, WA   │ │
+│  │ 🏘️ 98101                      │ │
+│  └─────────────────────────────────┘ │
+│                                     │
+│  Trading Statistics                 │
+│  ┌─────────────────────────────────┐ │
+│  │ ⭐ 4.8 Rating (23 reviews)     │ │
+│  │ 🛒 15 items sold               │ │
+│  │ 🛍️ 8 items bought              │ │
+│  │ 📅 Member since Jan 2024       │ │
+│  └─────────────────────────────────┘ │
+│                                     │
+│  [Edit Profile] [Privacy Settings]  │
+│                                     │
+│ ┌───┐ ┌───┐ ┌───┐ ┌───┐ ┌───┐     │
+│ │🏠 │ │🔍 │ │➕ │ │💬 │ │👤 │     │
+│ └───┘ └───┘ └───┘ └───┘ └───┘     │
+└─────────────────────────────────────┘
+
+Specifications:
+- Profile photo: 100px circle
+- Name: 20px Bold, #5C3D2E (logo brown)
+- Location: 14px Regular, #6B7280 (city, state, zip)
+- Contact info: Icon + text format
+- Trading stats: Key metrics display
+- Edit buttons: Primary and secondary buttons
+- Bottom navigation: Consistent across app
+```
+
+### **Screen 9: Item Details Screen**
 ```
 Layout: Full-screen item view with actions
 Background: White
@@ -339,7 +423,7 @@ Specifications:
 
 ## 💬 **Trade Flow Screens**
 
-### **Screen 9: Offer Creation Screen**
+### **Screen 10: Offer Creation Screen**
 ```
 Layout: Form with item summary and offer input
 Background: White
@@ -383,7 +467,7 @@ Specifications:
 - Send Offer: Primary button (#5C3D2E), full width
 ```
 
-### **Screen 10: Negotiation Chat Screen**
+### **Screen 11: Negotiation Chat Screen**
 ```
 Layout: Chat interface with offer messages
 Background: White
@@ -427,7 +511,7 @@ Specifications:
 - Action buttons: Accept, Decline, Counter
 ```
 
-### **Screen 11: Payment Process Screen**
+### **Screen 12: Payment Process Screen**
 ```
 Layout: Payment form with escrow explanation
 Background: White
@@ -445,6 +529,11 @@ Elements:
 │  │ Seller: Alex_Chen               │ │
 │  │ Meeting: University District    │ │
 │  │ Time: Tomorrow 2:00 PM          │ │
+│  └─────────────────────────────────┘ │
+│                                     │
+│  [Currency Toggle]                  │
+│  ┌─────────────────────────────────┐ │
+│  │ App Credits │ Local Currency   │ │
 │  └─────────────────────────────────┘ │
 │                                     │
 │  Payment Breakdown                  │
@@ -468,13 +557,14 @@ Elements:
 
 Specifications:
 - Trade summary: Complete trade details
+- Currency Toggle: App Credits (green) / Local Currency (orange)
 - Payment breakdown: Clear fee structure
 - Payment method: Saved card display
 - Escrow explanation: Security assurance
 - Pay button: Primary button (#5C3D2E) with total amount
 ```
 
-### **Screen 12: Trade Completion Screen**
+### **Screen 13: Trade Completion Screen**
 ```
 Layout: Meetup coordination and completion
 Background: White

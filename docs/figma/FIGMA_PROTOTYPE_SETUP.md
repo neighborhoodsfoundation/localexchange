@@ -82,6 +82,28 @@ Special Text:
 
 ### **Component Library**
 
+#### **Currency Toggle** (Logo-Inspired)
+```
+Currency Toggle Component:
+- Toggle Switch: #5C3D2E (logo brown) active state
+- Background: #F3F4F6 (light gray)
+- Labels: "App Credits" and "Local Currency"
+- Font: 14px Medium, #5C3D2E (logo brown)
+- Height: 40px
+- Border Radius: 20px
+
+Toggle States:
+- App Credits Active: Green background (#8BC34A), white text
+- Local Currency Active: Orange background (#E88D2A), white text
+- Inactive: Light gray background (#F3F4F6), gray text (#6B7280)
+
+Usage:
+- Display in header/navigation area
+- Show current selection state
+- Allow easy switching between systems
+- Persist user preference
+```
+
 #### **Buttons** (Logo-Inspired)
 ```
 Primary Button:
@@ -147,6 +169,37 @@ Input Success State:
 Input Error State:
 - Border: 2px solid #DC2626
 - Box Shadow: 0 0 0 3px rgba(220, 38, 38, 0.1)
+
+Profile Input Fields:
+- Full Name: Required, 2-50 characters
+- City: Required, autocomplete with suggestions
+- State: Required, dropdown selection
+- ZIP Code: Required, 5-digit format validation
+- Phone: Required, 10-digit format validation
+- Neighborhood: Required, text input with suggestions
+```
+
+#### **Profile Components** (Logo-Inspired)
+```
+Profile Information Display:
+- Name: 20px Bold, #5C3D2E (logo brown)
+- Location: 14px Regular, #6B7280 (city, state, zip)
+- Neighborhood: 14px Medium, #5C3D2E (logo brown)
+- Phone: 14px Regular, #6B7280 (formatted display)
+
+Profile Edit Form:
+- Full Name Input: Required field
+- City Input: Required with autocomplete
+- State Dropdown: Required selection
+- ZIP Code Input: Required with validation
+- Phone Input: Required with formatting
+- Neighborhood Input: Required with suggestions
+
+Location Validation:
+- City/State/ZIP consistency check
+- Neighborhood within city boundaries
+- Phone number format validation
+- Real address verification
 
 Dropdown:
 - Same as text input

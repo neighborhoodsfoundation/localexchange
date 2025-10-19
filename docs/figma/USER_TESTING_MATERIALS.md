@@ -146,7 +146,34 @@ Key Observations:
 - Are there any confusing steps?
 ```
 
-### **Scenario 3: Item Discovery & Search**
+### **Scenario 3: Currency System & Profile Management**
+```
+Task: "You want to understand how the currency system works and manage your profile information."
+
+Instructions:
+1. "Show me how you would switch between app credits and local currency"
+2. "Update your profile information including your neighborhood"
+3. "Explain what you understand about the two currency systems"
+
+Success Criteria:
+- User can find and use the currency toggle
+- User understands the difference between app credits and local currency
+- User can access and edit profile information
+- User can update neighborhood and contact details
+- User feels confident about the currency system
+
+Time Limit: 5 minutes
+Expected Path: Home → Currency Toggle → Profile → Edit Profile → Save Changes
+
+Key Observations:
+- Is the currency toggle intuitive and visible?
+- Does the user understand the difference between systems?
+- Is profile editing straightforward?
+- Are the neighborhood and contact fields clear?
+- Does the user trust the currency system?
+```
+
+### **Scenario 4: Item Discovery & Search**
 ```
 Task: "You're looking for a coffee table for your living room. Show me how you would search for one."
 
