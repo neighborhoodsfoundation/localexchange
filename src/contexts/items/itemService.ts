@@ -28,6 +28,7 @@ import {
   ItemCondition,
   ItemStatus
 } from './items.types';
+import { calculateTradeFees } from '../credits';
 import {
   generateItemValuation,
   analyzeItemImages,
@@ -87,9 +88,13 @@ export class ItemService {
 
       this.items.push(item);
 
+      // Calculate fees for the item price
+      const feeCalculation = calculateTradeFees(request.priceCredits);
+
       return {
         success: true,
-        item
+        item,
+        feeCalculation
       };
     } catch (error) {
       console.error('Error creating item:', error);
@@ -433,6 +438,49 @@ export class ItemService {
 
   clearChatbotSession(): void {
     this.chatbotSession = null;
+  }
+
+  // ============================================================================
+  // CREDITS INTEGRATION
+  // ============================================================================
+
+  /**
+   * Calculate fees for an item price
+   */
+  calculateItemFees(priceCredits: number) {
+    return calculateTradeFees(priceCredits);
+  }
+
+  /**
+   * Get fee breakdown for item listing
+   */
+  getItemFeeBreakdown(priceCredits: number) {
+    const feeCalculation = calculateTradeFees(priceCredits);
+    return {
+      itemPrice: priceCredits,
+      baseFee: feeCalculation.baseFee,
+      percentageFee: feeCalculation.percentageFee,
+      totalFees: feeCalculation.totalFee,
+      netAmount: priceCredits - feeCalculation.totalFee,
+      breakdown: feeCalculation.breakdown
+    };
+  }
+
+  /**
+   * Validate if user has sufficient credits for item listing
+   */
+  async validateCreditsForListing(userId: string, priceCredits: number): Promise<{ hasSufficientCredits: boolean; requiredCredits: number; currentBalance?: number }> {
+    // TODO: Implement actual balance check
+    // const balance = await getAccountBalance({ userId });
+    // const requiredCredits = priceCredits + calculateTradeFees(priceCredits).totalFee;
+    
+    // Mock implementation
+    const requiredCredits = priceCredits + calculateTradeFees(priceCredits).totalFee;
+    return {
+      hasSufficientCredits: true, // Mock: assume sufficient credits
+      requiredCredits,
+      currentBalance: 10000 // Mock balance
+    };
   }
 }
 

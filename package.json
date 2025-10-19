@@ -64,6 +64,8 @@
     "mime-types": "^2.1.35",
     "morgan": "^1.10.0",
     "pg": "^8.11.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "sharp": "^0.33.5",
     "uuid": "^9.0.1"
   },
@@ -77,6 +79,8 @@
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.9.0",
     "@types/pg": "^8.10.7",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "@types/sharp": "^0.32.0",
     "@types/supertest": "^2.0.16",
     "@types/uuid": "^9.0.7",

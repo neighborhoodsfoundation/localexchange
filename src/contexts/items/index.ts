@@ -8,7 +8,10 @@
 // CONTEXT PROVIDER
 // ============================================================================
 
-export { itemService } from './itemService';
+export { 
+  itemService,
+  ItemService
+} from './itemService';
 
 // ============================================================================
 // HOOKS

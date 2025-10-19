@@ -20,6 +20,7 @@ import {
   TradingError,
   TradingErrorCode
 } from './trading.types';
+import { processPayment, releaseEscrowFunds, refundEscrowFunds, calculateTradeFees } from '../credits';
 
 // ============================================================================
 // TRADE STATE MACHINE
@@ -82,6 +83,9 @@ export const createTrade = async (request: CreateTradeRequest): Promise<CreateTr
     //   RETURNING *
     // `, [request.itemId, request.buyerId, request.sellerId, request.offeredPrice, TradeStatus.OFFER_MADE]);
 
+    // Calculate trade fees
+    const feeCalculation = calculateTradeFees(request.offeredPrice);
+    
     // Mock implementation for now
     const trade: Trade = {
       id: 'trade-' + Date.now(),
@@ -580,6 +584,96 @@ export const getTradeStats = async (userId: string): Promise<{
       completionRate: 0
     };
   }
+};
+
+// ============================================================================
+// CREDITS INTEGRATION
+// ============================================================================
+
+/**
+ * Process payment for a trade
+ */
+export const processTradePayment = async (tradeId: string, buyerId: string, sellerId: string, amount: number): Promise<{ success: boolean; escrowId?: string; error?: string }> => {
+  try {
+    const response = await processPayment({
+      tradeId,
+      buyerId,
+      sellerId,
+      amount
+    });
+
+    if (response.success) {
+      return {
+        success: true,
+        escrowId: response.escrowAccount?.id
+      };
+    }
+
+    return {
+      success: false,
+      error: response.error
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Payment processing failed'
+    };
+  }
+};
+
+/**
+ * Release escrow funds for a completed trade
+ */
+export const releaseTradeEscrow = async (escrowId: string, releasedBy: string, reason: string): Promise<{ success: boolean; error?: string }> => {
+  try {
+    const response = await releaseEscrowFunds({
+      escrowId,
+      releaseType: 'MANUAL',
+      releasedBy,
+      reason
+    });
+
+    return {
+      success: response.success,
+      error: response.error
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Escrow release failed'
+    };
+  }
+};
+
+/**
+ * Refund escrow funds for a cancelled trade
+ */
+export const refundTradeEscrow = async (escrowId: string, refundedBy: string, reason: string): Promise<{ success: boolean; error?: string }> => {
+  try {
+    const response = await refundEscrowFunds({
+      escrowId,
+      refundType: 'FULL',
+      refundedBy,
+      reason
+    });
+
+    return {
+      success: response.success,
+      error: response.error
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Escrow refund failed'
+    };
+  }
+};
+
+/**
+ * Calculate fees for a trade
+ */
+export const calculateTradeFeesForAmount = (amount: number) => {
+  return calculateTradeFees(amount);
 };
 
 // ============================================================================

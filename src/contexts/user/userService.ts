@@ -20,6 +20,7 @@ import {
   DocumentType,
   VerificationStatus
 } from './user.types';
+import { createAccount, getAccountBalance, AccountType } from '../credits';
 
 // ============================================================================
 // API CONFIGURATION
@@ -180,6 +181,19 @@ class UserService {
       );
 
       this.http.setToken(response.token);
+      
+      // Create credits account for new user
+      try {
+        await createAccount({
+          userId: response.user.id,
+          accountType: AccountType.USER_WALLET,
+          initialBalance: 0
+        });
+      } catch (creditsError) {
+        console.warn('Failed to create credits account for new user:', creditsError);
+        // Don't fail registration if credits account creation fails
+      }
+      
       return response;
     } catch (error) {
       throw new Error(`Registration failed: ${error.message}`);
@@ -386,6 +400,43 @@ class UserService {
       );
     } catch (error) {
       throw new Error(`Failed to search users: ${error.message}`);
+    }
+  }
+
+  // ============================================================================
+  // CREDITS INTEGRATION
+  // ============================================================================
+
+  async getUserCreditsBalance(userId: string): Promise<{ balance: number; accountId: string } | null> {
+    try {
+      // TODO: Get account ID from userId first
+      // For now, using a mock account ID
+      const mockAccountId = `acc_${userId}`;
+      const response = await getAccountBalance({ accountId: mockAccountId });
+      if (response.success && response.balance) {
+        return {
+          balance: response.balance.total,
+          accountId: mockAccountId
+        };
+      }
+      return null;
+    } catch (error) {
+      console.error('Failed to get user credits balance:', error);
+      return null;
+    }
+  }
+
+  async createUserCreditsAccount(userId: string): Promise<boolean> {
+    try {
+      const response = await createAccount({
+        userId,
+        accountType: AccountType.USER_WALLET,
+        initialBalance: 0
+      });
+      return response.success;
+    } catch (error) {
+      console.error('Failed to create user credits account:', error);
+      return false;
     }
   }
 

@@ -47,7 +47,11 @@ export {
   validateTrade,
   canModifyTrade,
   isTradeActive,
-  getTradeStats
+  getTradeStats,
+  processTradePayment,
+  releaseTradeEscrow,
+  refundTradeEscrow,
+  calculateTradeFeesForAmount
 } from './tradeService';
 
 // ============================================================================
