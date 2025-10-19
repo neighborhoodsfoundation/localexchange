@@ -162,40 +162,42 @@ Feedback Screen:
 
 ## 🎨 **Design System & Components**
 
-### **Color Palette**
+### **Color Palette** (Neighborhoods Foundation Logo-Inspired)
 ```
 Primary Colors:
-- Primary Blue: #2563EB (buttons, links)
-- Success Green: #059669 (success states)
-- Warning Orange: #D97706 (warnings)
+- Primary Brown: #5C3D2E (buttons, links - matches logo)
+- Success Green: #8BC34A (success states - matches logo)
+- Accent Orange: #E88D2A (warnings, highlights - matches logo)
 - Error Red: #DC2626 (errors)
 
 Neutral Colors:
 - Background: #F9FAFB
 - Surface: #FFFFFF
-- Text Primary: #111827
+- Text Primary: #5C3D2E (matches logo brown)
 - Text Secondary: #6B7280
 - Border: #E5E7EB
 ```
 
-### **Typography**
+### **Typography** (Logo-Inspired)
 ```
 Headings:
-- H1: 24px, Bold
-- H2: 20px, SemiBold
-- H3: 18px, Medium
+- H1: 24px, Bold, #5C3D2E (logo brown)
+- H2: 20px, SemiBold, #5C3D2E (logo brown)
+- H3: 18px, Medium, #5C3D2E (logo brown)
 
 Body Text:
-- Large: 16px, Regular
-- Medium: 14px, Regular
-- Small: 12px, Regular
+- Large: 16px, Regular, #5C3D2E (logo brown)
+- Medium: 14px, Regular, #6B7280
+- Small: 12px, Regular, #6B7280
 ```
 
-### **Component Library**
+### **Component Library** (Logo-Inspired)
 ```
 Buttons:
-- Primary: Blue background, white text
-- Secondary: White background, blue border
+- Primary: #5C3D2E (logo brown) background, white text
+- Secondary: White background, #5C3D2E (logo brown) border
+- Success: #8BC34A (logo green) background, white text
+- Accent: #E88D2A (logo orange) background, white text
 - Danger: Red background, white text
 
 Input Fields:
