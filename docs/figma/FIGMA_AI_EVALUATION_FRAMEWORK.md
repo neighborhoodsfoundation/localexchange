@@ -313,3 +313,4 @@ AI Version: [Figma AI Version]
 4. Plan next AI iteration
 
 This framework helps you systematically evaluate Figma's AI-generated prototypes and develop an effective human-AI collaboration approach for your design work.
+
